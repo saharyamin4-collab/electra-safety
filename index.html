@@ -361,6 +361,29 @@ body[data-view="form"] .home-only{display:none!important}
 .mini.full b{color:var(--ok)}
 .lc-badges{display:flex;gap:6px;flex-wrap:wrap;padding:0 18px 14px}
 .pill.blue{color:var(--blue);background:var(--focus);border-color:transparent}
+.seal-banner{display:flex;align-items:center;gap:12px;margin:0 2px 14px;padding:14px 16px;border-radius:22px;color:#067647;background:linear-gradient(135deg,#ecfdf3,#d1fadf);border:1.5px solid rgba(18,183,106,.45);box-shadow:0 14px 30px -20px rgba(7,148,85,.7)}
+.seal-banner.bad{color:var(--danger);background:var(--danger-bg);border-color:var(--danger)}
+.seal-ic{width:40px;height:40px;flex:0 0 auto}
+.seal-txt{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+.seal-txt b{font-size:17px;font-weight:900}
+.seal-txt small{font-size:13px;opacity:.85;overflow:hidden;text-overflow:ellipsis}
+.worker.signed-w{border-color:rgba(18,183,106,.45)}
+.seal-stamp{display:flex;align-items:center;gap:10px;border:2.5px solid #0a7a3e;color:#0a7a3e;border-radius:12px;padding:8px 14px;margin:10px 0;font-weight:700}
+.seal-stamp b{font-size:15px}
+.seal-stamp small{display:block;font-weight:500;color:#2f5f45;direction:ltr;text-align:right;font-size:10px;word-break:break-all}
+.pdfdoc{position:fixed;left:-12000px;top:0;width:794px;padding:0 40px;background:#fff;color:#000;font-family:Heebo,Arial,sans-serif;font-size:14px;line-height:1.45;direction:rtl;box-sizing:border-box}
+.pdfdoc .ph{display:flex;align-items:center;gap:12px;border-bottom:3px solid #2b54e6;padding:6px 0 8px}
+.pdfdoc .ph svg{width:46px;height:46px;flex:0 0 auto}
+.pdfdoc h1{font-size:20px;margin:0}
+.pdfdoc h2{font-size:16px;margin:16px 0 6px;border-bottom:2px solid #000;padding-bottom:2px}
+.pdfdoc table{width:100%;border-collapse:collapse;margin-bottom:6px}
+.pdfdoc th,.pdfdoc td{border:1px solid #888;padding:5px 7px;text-align:right;vertical-align:middle}
+.pdfdoc th{background:#eef2ff}
+.pdfdoc img.sig{height:58px;max-width:230px;display:block}
+.pdfdoc .draft{border:2px solid #c00;color:#c00;padding:6px;font-weight:700;margin:6px 0}
+.pdfdoc .crit{border:2px solid #c00;padding:6px 12px;margin:10px 0}
+.pdfdoc ol{margin:4px 0;padding-inline-start:22px}
+.lock-ic{width:46px;height:46px;border-radius:14px;background:var(--surface-3);display:grid;place-items:center;font-size:22px;flex:0 0 auto}
 .pill.dev{color:var(--muted);background:var(--surface-2)}
 .pill.cur{color:#fff;background:var(--grad);border-color:transparent}
 .lc-actions{display:flex;gap:8px;padding:12px 18px;background:var(--surface-2);border-top:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
@@ -453,6 +476,10 @@ body[data-view="form"] .home-only{display:none!important}
     <div id="cards"></div>
   </section>
   <div class="alert alert-warn form-only" id="conflictBar" hidden style="display:flex;gap:10px;align-items:center"><span id="conflictTxt" style="flex:1;font-weight:700"></span><button type="button" class="btn btn-sm btn-primary" id="conflictLoad">טעינת הגרסה העדכנית</button></div>
+  <div class="seal-banner form-only" id="sealBanner" hidden>
+    <svg class="seal-ic" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 39 9.5V22c0 10-6.5 17.5-15 22C15.5 39.5 9 32 9 22V9.5Z" fill="currentColor" opacity=".15"/><path d="M24 4 39 9.5V22c0 10-6.5 17.5-15 22C15.5 39.5 9 32 9 22V9.5Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="m17 24 5 5 9-10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="seal-txt"><b id="sealTitle">חתום ומאובטח</b><small id="sealMeta"></small></span>
+  </div>
   <div class="ctx form-only" id="ctxBar"><button type="button" class="ctx-back" data-setview="home">‹ תמונת מצב</button><span class="ctx-loc" id="ctxLoc"></span><span class="pill" id="ctxStatus"></span></div>
 
   <!-- STEP 1 -->
@@ -560,10 +587,24 @@ body[data-view="form"] .home-only{display:none!important}
         <button type="button" class="btn btn-primary" id="sendBtn">שליחת הטופס</button>
         <button type="button" class="btn" id="printBtn">הדפסה / PDF</button>
       </div>
-      <button type="button" class="btn btn-wa btn-block" id="waBtn" style="margin-bottom:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.3-.6-2.2-1.2-3.1-2.6-.2-.4.2-.4.7-1.2.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/></svg>שיתוף בוואטסאפ</button>
+      <button type="button" class="btn btn-wa btn-block" id="waBtn" style="margin-bottom:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.3-.6-2.2-1.2-3.1-2.6-.2-.4.2-.4.7-1.2.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/></svg>שיתוף PDF בוואטסאפ</button>
       <div id="sendStatus"></div>
     </div>
 
+    <div class="panel">
+      <h3>כל הצ'קליסטים</h3>
+      <p class="hint" style="margin:0 0 12px">הצ'קליסט הזה נשמר אוטומטית בתמונת המצב, יחד עם כל הצ'קליסטים האחרים במכשיר.</p>
+      <button type="button" class="btn btn-block" data-setview="home">לתמונת המצב</button>
+    </div>
+    <div class="panel" id="adminLock">
+      <div style="display:flex;gap:12px;align-items:center">
+        <span class="lock-ic" aria-hidden="true">🔒</span>
+        <span style="flex:1"><b>הגדרות, גיבוי ושחזור</b><br><span class="hint" style="margin:0">אזור למנהל בלבד — נדרש קוד מנהל</span></span>
+        <button type="button" class="btn btn-sm btn-primary" id="adminOpenBtn">כניסת מנהל</button>
+      </div>
+    </div>
+    <div id="adminArea" hidden>
+    <div class="alert alert-warn" style="display:flex;align-items:center;gap:10px"><span style="flex:1;font-weight:700" id="adminBarTxt">אזור מנהל פתוח</span><button type="button" class="btn btn-sm" id="adminLockBtn">נעילה</button></div>
     <div class="panel">
       <h3>גיבוי ושחזור</h3>
       <div class="health">
@@ -583,11 +624,6 @@ body[data-view="form"] .home-only{display:none!important}
       <ul class="list" id="snapList"></ul>
     </div>
 
-    <div class="panel">
-      <h3>כל הצ'קליסטים</h3>
-      <p class="hint" style="margin:0 0 12px">הצ'קליסט הזה נשמר אוטומטית בתמונת המצב, יחד עם כל הצ'קליסטים האחרים במכשיר.</p>
-      <button type="button" class="btn btn-block" data-setview="home">לתמונת המצב</button>
-    </div>
 
     <div class="panel" id="teamPanel">
       <h3>גיבוי ענן וסנכרון צוות <span class="count" id="teamCount">כבוי</span></h3>
@@ -641,6 +677,7 @@ body[data-view="form"] .home-only{display:none!important}
         <button type="button" class="btn btn-sm" id="testConnBtn">בדיקת חיבור</button>
       </div>
     </details>
+    </div>
     <div class="panel">
       <button type="button" class="btn btn-block btn-primary" id="newFormBtn">＋ צ'קליסט חדש במקביל</button>
       <p class="hint" style="text-align:center">הצ'קליסט הנוכחי נשאר שמור ופתוח להמשך בתמונת המצב.</p>
@@ -649,7 +686,7 @@ body[data-view="form"] .home-only{display:none!important}
 
   <!-- STEP 6 -->
   <section class="step" data-step="6" aria-labelledby="s6t">
-    <div class="step-head"><div><h2 id="s6t">ניטור תרמי</h2><p class="lead">סריקה כל 15 דקות. התראה בצליל, ברטט ובמסך.</p></div></div>
+    <div class="step-head"><div><h2 id="s6t">ניטור תרמי</h2><p class="lead">סריקה תרמית חובה לאורך כל הבדיקה. טיימר התזכורת מתריע בצליל, ברטט ובמסך.</p></div></div>
     <div class="critical-slot"></div>
     <div class="alert alert-ok closed" id="closedBanner" hidden></div>
     <div class="panel">
@@ -749,6 +786,29 @@ body[data-view="form"] .home-only{display:none!important}
   </div>
 </div>
 
+<div class="overlay" id="pdfOverlay" hidden>
+  <div class="ov-box" role="dialog" aria-modal="true" aria-labelledby="pdfT">
+    <h2 id="pdfT">שיתוף PDF</h2>
+    <p class="lead" id="pdfMsg">מכין PDF…</p>
+    <div class="btn-row">
+      <button type="button" class="btn btn-wa" id="pdfShareNow" hidden>שליחה בוואטסאפ</button>
+      <button type="button" class="btn" id="pdfDl" hidden>הורדה למכשיר</button>
+      <a class="btn" id="pdfWeb" href="https://web.whatsapp.com/" target="_blank" rel="noopener" hidden>פתיחת WhatsApp Web</a>
+    </div>
+    <button type="button" class="btn btn-block btn-sm" id="pdfClose" style="margin-top:10px">סגירה</button>
+  </div>
+</div>
+
+<div class="overlay" id="adminOverlay" hidden>
+  <div class="ov-box" role="dialog" aria-modal="true" aria-labelledby="admT">
+    <h2 id="admT">🔒 כניסת מנהל</h2>
+    <p class="lead">הזן את קוד המנהל</p>
+    <input type="password" id="adminCode" inputmode="numeric" autocomplete="off" maxlength="12" aria-label="קוד מנהל" style="text-align:center;font-size:28px;letter-spacing:.4em;direction:ltr">
+    <p class="hint" id="adminErr" style="color:var(--danger);text-align:center;min-height:1.4em;font-weight:700"></p>
+    <div class="btn-row"><button type="button" class="btn btn-primary" id="adminOk">כניסה</button><button type="button" class="btn" id="adminCancel">ביטול</button></div>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" hidden></div>
 <div id="printArea"></div>
 
@@ -758,7 +818,9 @@ body[data-view="form"] .home-only{display:none!important}
 const CONFIG = {
   DEFAULT_WEBHOOK_URL: '',      // ניתן להדביק כאן את כתובת ה-Web App, או להזין במסך ההגדרות
   SCAN_INTERVAL_MIN: 15,
-  APP_VERSION: '3.0.0',
+  APP_VERSION: '3.2.0',
+  ADMIN_HASH: '2430bc8f',      // קוד מנהל (מוצפן)
+  ADMIN_MINUTES: 15,
   SNAPSHOT_EVERY_MS: 3 * 60000, // נקודת שחזור אוטומטית לכל היותר כל 3 דקות
   SNAPSHOT_KEEP: 10,
   ARCHIVE_KEEP: 40
@@ -774,7 +836,7 @@ const ROLES = [
   { key:'e2', num:2, emergency:true, title:'מנתק מצברים (DC)' },
   { key:'e3', num:3, emergency:true, title:'מפנה אנשים וסופר נוכחים' },
   { key:'e4', num:4, emergency:true, title:'מזעיק כוחות הצלה ומכוון אותם' },
-  { key:'r5', loadOnly:true, title:'בודק תרמי מוסמך (בבדיקה בעומס — סריקה כל 15 דקות)' }
+  { key:'r5', loadOnly:true, title:'בודק תרמי מוסמך (סריקות לאורך כל הבדיקה)' }
 ];
 const MGR_I = ROLES.findIndex(r => r.key === 'r1');
 const SCAN_I = ROLES.findIndex(r => r.key === 'r5');
@@ -792,7 +854,7 @@ const CHECKS = [
   'זמינות 2 מכשירי קשר תקינים (אצל מנהל הבדיקה ואחראי החילוץ) ומצלמה תרמית מכוילת.'
 ];
 const CRITICAL = [
-  '<b>בבדיקה בעומס: סריקה תרמית חובה כל 15 דקות</b> ועצירה מיידית בכל חריגת טמפרטורה — בדגש על המעבר מפריקה לטעינה.',
+  '<b>בבדיקה בעומס: סריקה תרמית חובה לאורך כל הבדיקה</b> ועצירה מיידית בכל חריגת טמפרטורה — בדגש על המעבר מפריקה לטעינה.',
   '<b>רעש חריג ומסוכן, ריח שרוף או עשן:</b> ניתוק מתחים מיידי (AC + מצברים), פינוי וספירת נוכחים.',
   '<b>איסור מוחלט על כיבוי במים</b> לפני קבלת אישור זיכוי מתחים רשמי מגורם מוסמך.'
 ];
@@ -907,7 +969,7 @@ class SigPad {
   }
   pos(e){ const r = this.c.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top, p: e.pressure || .5 }; }
   start(e){
-    if (this.c.style.pointerEvents === 'none') return;
+    if (this.locked || this.c.style.pointerEvents === 'none') return;
     e.preventDefault(); if (!this.w) this.resize(); if (!this.w) return;
     this.drawing = true; try { this.c.setPointerCapture(e.pointerId); } catch(_){}
     this.last = this.pos(e);
@@ -950,7 +1012,7 @@ let scans = LS.get(K.scans, []);
 let queue = LS.get(K.queue, []);
 let timer = Object.assign({ running:false, endAt:null, remaining:null, dueAt:null }, LS.get(K.timer, {}));
 let lastSync = LS.get(K.lastSync, null);
-let switching = false, editAt = 0;
+let switching = false, editAt = 0, seal = null, sealOk = null;
 function markEdit(){ editAt = Date.now(); }
 let activeId = LS.get(K.active, null), index = LS.get(K.index, null) || [], view = 'form', homeFilter = 'all', homeSite = 'all';
 let lastSavedAt = null, saveOk = true, idbOk = null, lastSnapAt = 0, persisted = null;
@@ -1008,7 +1070,7 @@ function buildUI(){
   $('#checkList').innerHTML = CHECKS.map((c, i) => `<li><label class="opt" id="chkrow${i}"><input type="checkbox" id="chk${i}"><div class="opt-body"><span class="tick"></span><span class="ck-num">${i+1}.</span><span class="ck-text">${esc(c)}</span></div></label><div class="ck-note"><button type="button" class="note-btn" data-note="${i}">הוספת הערה</button><textarea id="chknote${i}" rows="2" placeholder="מה חסר, ומה נעשה במקום" aria-label="הערה לסעיף ${i+1}" hidden></textarea></div></li>`).join('');
   $$('.critical-slot').forEach(el => el.innerHTML = criticalHTML());
   $('#declText').textContent = DECLARATION;
-  mgrPad = new SigPad($('#mgrCanvas'), onChange);
+  mgrPad = new SigPad($('#mgrCanvas'), onMgrSig);
 }
 
 /* ================= עובדים ================= */
@@ -1025,10 +1087,11 @@ function addWorker(data){
     <div class="sig-wrap" id="w_${id}_sig"><canvas aria-label="משטח חתימת עובד"></canvas><div class="sig-line"></div><div class="sig-hint">חתימה באצבע או בעט</div><span class="sig-ok">✓ נחתם</span></div>
     <div class="sig-actions"><button type="button" class="btn btn-sm" data-act="clear">ניקוי חתימה</button></div>`;
   $('#workersList').appendChild(el);
-  const pad = new SigPad($('canvas', el), onChange);
-  const w = { id, el, pad };
+  let w;
+  const pad = new SigPad($('canvas', el), () => { if (pad.data && !w.signedAt){ w.signedAt = Date.now(); lockWorker(w); } onChange(); });
+  w = { id, el, pad, signedAt: null };
   workers.push(w);
-  if (data){ $('[data-f=name]', el).value = data.name || ''; $('[data-f=idc]', el).value = data.idc || ''; pad.setData(data.sig); }
+  if (data){ $('[data-f=name]', el).value = data.name || ''; $('[data-f=idc]', el).value = data.idc || ''; pad.setData(data.sig); if (data.sig){ w.signedAt = data.signedAt || 1; lockWorker(w); } }
   renumberWorkers();
   return w;
 }
@@ -1044,8 +1107,8 @@ function collect(){
     checks: CHECKS.map((_, i) => $('#chk' + i).checked),
     checkNotes: CHECKS.map((_, i) => $('#chknote' + i).value.trim()),
     declAck: $('#declAck').checked,
-    workers: workers.map(w => ({ id: w.id, name: $('[data-f=name]', w.el).value.trim(), idc: $('[data-f=idc]', w.el).value.trim(), sig: w.pad.data })),
-    mgrSig: mgrPad.data, step: currentStep, tried
+    workers: workers.map(w => ({ id: w.id, name: $('[data-f=name]', w.el).value.trim(), idc: $('[data-f=idc]', w.el).value.trim(), sig: w.pad.data, signedAt: w.signedAt || null })),
+    mgrSig: mgrPad.data, seal, step: currentStep, tried
   };
 }
 function restore(s){
@@ -1060,6 +1123,7 @@ function restore(s){
   (s.workers || []).forEach(w => addWorker(w));
   if (!workers.length) addWorker();
   mgrPad.setData(s.mgrSig);
+  seal = s.seal || null; if (seal) mgrPad.locked = true;
   tried = !!s.tried;
 }
 function hasContent(f){ return !!(f && (f.quadrant || f.hall || (f.team || []).some(t => t.name) || (f.workers || []).some(w => w.name || w.sig) || (f.checks || []).some(Boolean))); }
@@ -1136,7 +1200,7 @@ function metaOf(rec){
   return { id:rec.id, createdAt:rec.createdAt || Date.now(), updatedAt:rec.updatedAt || Date.now(), site:f.site, quadrant:f.quadrant, hall:f.hall,
     location:locStr(f), dt:f.dt, types:f.types, load:isLoad(f), status:statusOf(rec.submission, f), sync: rec.submission ? rec.submission.status : null,
     subId: rec.submission ? rec.submission.id : null, closedAt: rec.submission ? rec.submission.closedAt || null : null,
-    pct:pctOf(f, errors), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
+    pct:pctOf(f, errors), sealed: !!(rec.form && rec.form.seal), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
     workers:f.workers.filter(w => w.name || w.sig).length, timer:rec.timer || {}, empty: !hasContent(f) && !rec.submission };
 }
 function activeRecord(){ const prev = index.find(m => m.id === activeId); if (!editAt) editAt = prev ? prev.updatedAt : Date.now(); return { id:activeId, createdAt: prev ? prev.createdAt : Date.now(), updatedAt:editAt, form:collect(), submission, scans, timer }; }
@@ -1270,7 +1334,7 @@ function renderHome(){
         <span class="lc-txt"><small>${esc(m.site || 'אתר לא נבחר')}</small><h3>${esc(title)}</h3><span class="sub">${esc(m.dt ? fmtDT(m.dt) : 'ללא תאריך')}${types ? ' · ' + esc(types) : ''}</span></span>
         <span class="mini ${pct === 100 ? 'full' : ''}"><svg viewBox="0 0 62 62"><circle class="bg" cx="31" cy="31" r="25"/><circle class="fg" cx="31" cy="31" r="25" pathLength="100" stroke-dasharray="${pct} 100"/></svg><b>${pct === 100 ? '✓' : pct + '%'}</b></span>
       </button>
-      <div class="lc-badges">${cur ? '<span class="pill cur">פתוח עכשיו</span>' : ''}<span class="pill ${sc}">${stx}</span>${devPill}${bk}${sync}${ti ? `<span class="pill ${ti.cls === 'bad' ? 'bad' : 'warn'}" data-tid="${esc(m.id)}" data-tremote="${m.isLocal ? '' : '1'}">${ti.text}</span>` : ''}${m.scans ? `<span class="pill">${m.scans} סריקות${m.exc ? ` · <b style="color:var(--danger)">${m.exc} חריגות</b>` : ''}${m.maxT != null ? ` · מקס' ${m.maxT}°` : ''}</span>` : ''}${m.workers ? `<span class="pill">${m.workers} עובדים</span>` : ''}</div>
+      <div class="lc-badges">${cur ? '<span class="pill cur">פתוח עכשיו</span>' : ''}${m.sealed ? '<span class="pill ok">🔏 חתום</span>' : ''}<span class="pill ${sc}">${stx}</span>${devPill}${bk}${sync}${ti ? `<span class="pill ${ti.cls === 'bad' ? 'bad' : 'warn'}" data-tid="${esc(m.id)}" data-tremote="${m.isLocal ? '' : '1'}">${ti.text}</span>` : ''}${m.scans ? `<span class="pill">${m.scans} סריקות${m.exc ? ` · <b style="color:var(--danger)">${m.exc} חריגות</b>` : ''}${m.maxT != null ? ` · מקס' ${m.maxT}°` : ''}</span>` : ''}${m.workers ? `<span class="pill">${m.workers} עובדים</span>` : ''}</div>
       <div class="lc-actions">${actions}</div>
     </article>`;
   }).join('');
@@ -1350,7 +1414,8 @@ function cloudPush(rec, reason){
   if (remote && (remote.updatedAt || 0) > (rec.updatedAt || 0)) return; // בענן יש גרסה חדשה יותר — לא דורסים
   if (remote && remote.deleted && (rec.updatedAt || 0) <= (remote.deletedAt || 0)) return; // נמחק בענן — לא מחזירים בטעות
   const sigs = [{ key:'mgr', data:f.mgrSig }].concat((f.workers || []).map(w => ({ key:'w_' + w.id, data:w.sig })));
-  const formNoSig = { ...f, workers:(f.workers || []).map(w => ({ ...w, sig: w.sig ? 'cloud' : null })), mgrSig: f.mgrSig ? 'cloud' : null };
+  const { step: _st, tried: _tr, ...fBase } = f;
+  const formNoSig = { ...fBase, workers:(f.workers || []).map(w => ({ ...w, sig: w.sig ? 'cloud' : null })), mgrSig: f.mgrSig ? 'cloud' : null };
   const meta = metaOf(rec); delete meta.empty;
   const doc = clean({ id, updatedAt: rec.updatedAt || Date.now(), device: settings.deviceName || '', meta, form: formNoSig, submission: rec.submission || null, scans: rec.scans || [], timer: rec.timer || {} });
   // היסטוריית גרסאות בענן (לא ניתנת למחיקה) — באירועים משמעותיים ולפחות כל 5 דקות של עריכה
@@ -1358,6 +1423,17 @@ function cloudPush(rec, reason){
   if (window.FBX.saveRev && (reason || ((doc.updatedAt || 0) > (rm.upd || 0) && now - (rm.at || 0) > 5 * 60000))){
     CLOUD.revMark[team + '/' + id] = { at: now, upd: doc.updatedAt }; LS.set(K_REV, CLOUD.revMark);
     window.FBX.saveRev(team, id, clean({ at: now, device: settings.deviceName || '', reason: reason || 'עריכה', updatedAt: doc.updatedAt, doc: { meta: doc.meta, form: doc.form, submission: doc.submission, scans: doc.scans, timer: doc.timer } })).catch(() => {});
+  }
+  const sigOps = sigs.filter(s => s.data).map(s => ({ ...s, k: team + '/' + id + '/' + s.key, fp: s.data.length + ':' + s.data.slice(-40) })).filter(s => CLOUD.pushed[s.k] !== s.fp);
+  const sigBytes = sigOps.reduce((a, s) => a + s.data.length, 0);
+  if (window.FBX.saveAll && sigBytes < 7000000){
+    // חתימות ומסמך נשמרים יחד, בפעולה אחת ובלתי ניתנת לפיצול
+    sigOps.forEach(s => CLOUD.pushed[s.k] = s.fp);
+    window.FBX.saveAll(team, id, doc, sigOps.map(s => ({ key:s.key, data:s.data }))).then(() => {
+      CLOUD.acked[id] = Math.max(CLOUD.acked[id] || 0, doc.updatedAt); LS.set(K_ACK, CLOUD.acked);
+      CLOUD.err = null; updateIndicators(); if (view === 'home') renderHome();
+    }).catch(e => { sigOps.forEach(s => delete CLOUD.pushed[s.k]); CLOUD.err = teamErrText(e); updateIndicators(); });
+    return;
   }
   window.FBX.save(team, id, doc).then(() => {
     CLOUD.acked[id] = Math.max(CLOUD.acked[id] || 0, doc.updatedAt); LS.set(K_ACK, CLOUD.acked);
@@ -1472,6 +1548,7 @@ async function loadRevs(){
   ul.innerHTML = revCache.map(r => `<li><span class="grow"><b>${fmtDT(r.at)}</b> · ${esc(r.reason || '')}<small>${esc(r.device || '')}${r.doc && r.doc.meta ? ' · מוכנות ' + r.doc.meta.pct + '%' : ''}</small></span><button type="button" class="btn btn-sm" data-rev="${esc(r.rid)}">שחזור</button></li>`).join('');
 }
 async function restoreRev(rid){
+  if (seal) return toast('הצ\'קליסט חתום ומאובטח — לא ניתן לשחזר גרסה. אפשר לפתוח צ\'קליסט חדש עם "שכפול צוות".');
   const r = revCache.find(x => x.rid === rid); if (!r || !r.doc) return;
   if (!confirm(`לשחזר את הצ'קליסט לגרסה מ-${fmtDT(r.at)}? המצב הנוכחי יישמר כנקודת שחזור וכגרסה בענן.`)) return;
   await maybeSnapshot(collect(), 'לפני שחזור גרסה', true);
@@ -1529,7 +1606,8 @@ function refresh(){
   const pct = pctOf(s, errors);
   const st = statusOf(submission, s), [sc, stx] = STATUS_UI[st];
   $('#ctxLoc').textContent = locStr(s) || 'צ\'קליסט חדש';
-  $('#ctxStatus').className = 'pill ' + sc; $('#ctxStatus').textContent = stx;
+  if (seal){ $('#ctxStatus').className = 'pill ok'; $('#ctxStatus').textContent = '🔏 חתום'; } else { $('#ctxStatus').className = 'pill ' + sc; $('#ctxStatus').textContent = stx; }
+  renderSeal();
   $('#hsReady').textContent = pct + '%';
   const nDoneH = CHECKS.filter((_, i) => s.checks[i] || s.checkNotes[i]).length;
   $('#hsChecks').textContent = `${nDoneH}/${CHECKS.length}`; $('#hsChecksBox').classList.toggle('done', nDoneH === CHECKS.length);
@@ -1726,6 +1804,64 @@ function lockForm(on){
   $$('.sig-wrap canvas').forEach(c => c.style.pointerEvents = on ? 'none' : '');
 }
 
+/* ================= חתימה סופית ונעילה ================= */
+function lockWorker(w){
+  w.pad.locked = true;
+  $$('[data-f=name],[data-f=idc]', w.el).forEach(i => i.readOnly = true);
+  const ok = $('.sig-ok', w.el); if (ok) ok.textContent = '✓ נחתם' + (w.signedAt > 1 ? ' ' + fmtTime(w.signedAt) : '') + ' · נעול';
+  w.el.classList.add('signed-w');
+}
+function unlockWorker(w){
+  w.pad.locked = false; w.signedAt = null;
+  $$('[data-f=name],[data-f=idc]', w.el).forEach(i => i.readOnly = false);
+  const ok = $('.sig-ok', w.el); if (ok) ok.textContent = '✓ נחתם';
+  w.el.classList.remove('signed-w');
+}
+async function sha256hex(str){
+  try { if (crypto.subtle){ const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)); return Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, '0')).join(''); } } catch(e){}
+  let a = 0x811c9dc5; for (let i = 0; i < str.length; i++){ a ^= str.charCodeAt(i); a = Math.imul(a, 16777619); } return 'fnv-' + (a >>> 0).toString(16);
+}
+function canonSeal(f, s){
+  return JSON.stringify([f.site, f.dt, f.quadrant, f.hall, f.equipment, f.types, f.other, f.notes,
+    (f.team || []).map(t => [t.key, t.name, t.phone]), f.checks, f.checkNotes, !!f.declAck,
+    (f.workers || []).map(w => [w.id, w.name, w.idc, w.sig]), f.mgrSig, s.at, s.by]);
+}
+function onMgrSig(){
+  if (seal){ onChange(); return; }
+  if (!mgrPad.data){ onChange(); return; }
+  const others = validate().errors.filter(e => e.id !== 'mgrSigWrap');
+  if (others.length){
+    tried = true; mgrPad.setData(null); onChange();
+    toast(`לפני חתימת המנהל יש להשלים ${others.length} פריטים`, 3500);
+    setTimeout(() => jumpTo(others[0].step, others[0].id), 700);
+    return;
+  }
+  if (!confirm('חתימה סופית של מנהל הבדיקה\n\nלאחר האישור הצ\'קליסט ננעל, מקבל חותמת דיגיטלית, ולא ניתן יותר לשנות אותו — גם לא ממכשיר אחר.\n\nלחתום ולנעול?')){ mgrPad.setData(null); onChange(); return; }
+  sealNow();
+}
+async function sealNow(){
+  const f = collect();
+  const s0 = { at: new Date().toISOString(), by: f.team[MGR_I].name || '', device: settings.deviceName || '' };
+  s0.hash = await sha256hex(canonSeal(f, s0));
+  seal = s0; sealOk = true; mgrPad.locked = true;
+  markEdit(); markRev('חתימת מנהל — נעילה');
+  lockForm(true); saveNow(); refresh(); haptic([30, 40, 30]);
+  toast('🔏 הצ\'קליסט נחתם וננעל', 3000);
+  setTimeout(() => showStep(5), 700);
+}
+async function verifySeal(){
+  if (!seal){ sealOk = null; renderSeal(); return; }
+  sealOk = (await sha256hex(canonSeal(collect(), seal))) === seal.hash;
+  renderSeal();
+}
+function renderSeal(){
+  const b = $('#sealBanner'); if (!b) return;
+  b.hidden = !seal; if (!seal) return;
+  b.classList.toggle('bad', sealOk === false);
+  $('#sealTitle').textContent = sealOk === false ? '⚠ החותמת לא תואמת — התוכן שונה אחרי החתימה' : 'חתום ומאובטח';
+  $('#sealMeta').textContent = `נחתם ע"י ${seal.by || 'מנהל הבדיקה'} · ${fmtDT(seal.at)} · חותמת ${String(seal.hash).slice(0, 12)}${sealOk ? ' · ✔ אומת' : ''}`;
+}
+
 /* ================= ארכיון, נקודות שחזור וקובץ גיבוי ================= */
 function archiveCurrent(){ return persistActive(); }
 async function renderSnapshots(){
@@ -1738,6 +1874,7 @@ function backupObject(form, sub, sc){ return { app:'cx-electra', version:CONFIG.
 function backupName(form){ const d = (form && form.dt || new Date().toISOString()).slice(0, 16).replace(/[:T]/g, '-'); return `cx-electra-${(form && form.site) || 'טופס'}-${d}.json`; }
 async function restoreSnapshot(id){
   const snap = await IDB.get('snapshots', id); if (!snap) return toast('נקודת השחזור לא נמצאה');
+  if (seal && (!snap.listId || snap.listId === activeId)) return toast('הצ\'קליסט חתום ומאובטח — לא ניתן לשחזר אותו לגרסה קודמת');
   if (!confirm(`לשחזר את הטופס למצב של ${fmtTime(snap.at)}? המצב הנוכחי יישמר כנקודת שחזור.`)) return;
   await maybeSnapshot(collect(), 'לפני שחזור', true);
   await persistActive();
@@ -1795,7 +1932,7 @@ function shareText(){
     if (submission && submission.closedAt) lines.push(`🏁 הבדיקה הסתיימה ב-${fmtTime(submission.closedAt)}`);
   }
   lines.push('', b('דגשי חירום'));
-  lines.push('• סריקה תרמית כל 15 דק\', עצירה בכל חריגה');
+  lines.push('• סריקה תרמית חובה לאורך כל הבדיקה, עצירה בכל חריגה');
   lines.push('• רעש חריג ומסוכן / ריח שרוף / עשן ← ניתוק AC + מצברים, פינוי וספירת נוכחים');
   lines.push('• אין כיבוי במים לפני אישור זיכוי מתחים');
   if (submission) lines.push('', `מזהה: ${submission.id}${submission.hash ? ' · חותמת: ' + submission.hash.slice(0, 12) : ''}`);
@@ -1809,16 +1946,18 @@ function shareWhatsApp(){
 }
 
 /* ================= הדפסה / PDF ================= */
-function buildPrint(s, sub, sc){
+function buildPrint(s, sub, sc){ return renderDoc(s, sub, sc, true); }
+function renderDoc(s, sub, sc, toPrintArea){
   const errors = s === undefined ? validate().errors : [];
   s = s || collect(); sub = sub === undefined ? submission : sub; sc = sc || scans;
   const team = ROLES.map((r, i) => (s.team || []).find(x => x && x.key === r.key) || (s.team || [])[i] || {});
   const notes = s.checkNotes || [];
   const row = (k, v) => `<tr><th style="width:28%">${esc(k)}</th><td>${esc(v || '—')}</td></tr>`;
   const sigImg = d => d ? `<img class="sig" src="${d}" alt="חתימה">` : '—';
-  $('#printArea').innerHTML = `
+  const html = `
     <div class="ph">${LOGO_SVG}<div><h1>צ'קליסט בטיחות וחלוקת תפקידים — בדיקות בעומס</h1>
     <div>CX-Electra | אתר ${esc(s.site || '—')} | הופק: ${esc(fmtDT(Date.now()))}${sub ? ' | מזהה: ' + esc(sub.id) : ''}</div></div></div>
+    ${s.seal ? `<div class="seal-stamp avoid"><span style="font-size:26px">🔏</span><span><b>חתום ומאובטח — לא ניתן לשינוי</b><br>נחתם ע"י ${esc(s.seal.by || 'מנהל הבדיקה')} · ${esc(fmtDT(s.seal.at))}<small>SHA-256: ${esc(s.seal.hash)}</small></span></div>` : ''}
     ${errors.length ? `<div class="draft">טיוטה — הטופס אינו שלם (${errors.length} פריטים חסרים)</div>` : ''}
     <h2>פרטי הבדיקה</h2>
     <table>${row('תאריך ושעה', s.dt ? fmtDT(s.dt) : '')}${row('מיקום', locStr(s))}${row('ציוד נבדק', s.equipment)}${row('סוג בדיקה', (s.types || []).map(t => t === 'אחר' ? 'אחר: ' + s.other : t).join(', '))}${row('הערות', s.notes)}</table>
@@ -1834,12 +1973,100 @@ function buildPrint(s, sub, sc){
     <table class="avoid">${row('שם', team[MGR_I].name)}<tr><th>חתימה</th><td>${sigImg(s.mgrSig)}</td></tr></table>
     ${sub && sub.hash ? `<p style="font-size:8.5pt;color:#555;margin-top:10px;direction:ltr;text-align:right">חותמת שלמות דיגיטלית (SHA-256) של הטופס בשעת השליחה: ${esc(sub.hash)}</p>` : ''}
     ${sc.length ? `<h2>סריקות תרמיות</h2><table><tr><th>שעה</th><th>סטטוס</th><th>שלב</th><th>טמפ' (°C)</th><th>הערה</th><th>בודק</th></tr>${[...sc].reverse().map(x => `<tr><td>${esc(fmtDT(x.time))}</td><td>${esc(x.status)}</td><td>${esc(x.phase)}</td><td>${esc(x.temperature)}</td><td>${esc(x.note)}</td><td>${esc(x.scanner)}</td></tr>`).join('')}</table>` : ''}`;
+  if (toPrintArea !== false) $('#printArea').innerHTML = html;
+  return html;
 }
 function printDoc(data){
   if (data) buildPrint(data.form, data.submission || null, data.scans || []); else buildPrint();
   const t = document.title, f = data ? data.form : collect();
   document.title = `CX-Electra_${f.site || ''}_${(f.dt || '').replace(/[:T]/g, '-')}`;
   setTimeout(() => { window.print(); setTimeout(() => document.title = t, 800); }, 60);
+}
+
+/* ================= PDF אמיתי לשיתוף ================= */
+const PDF_LIBS = ['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];
+function loadScript(src){ return new Promise((res, rej) => { if ([...document.scripts].some(s => s.src === src && s.dataset.ok)) return res(); const s = document.createElement('script'); s.src = src; s.async = true; s.onload = () => { s.dataset.ok = '1'; res(); }; s.onerror = () => { s.remove(); rej(new Error('load ' + src)); }; document.head.appendChild(s); }); }
+async function loadPdfLibs(){ if (window.html2canvas && window.jspdf) return; for (const u of PDF_LIBS) await loadScript(u); }
+function pdfName(f){ const d = (f.dt || new Date().toISOString()).slice(0, 10); return ('CX-Electra_' + [f.site, f.quadrant && 'רביע-' + f.quadrant, f.hall && 'מודול-' + f.hall, d].filter(Boolean).join('_')).replace(/[\\/:*?"<>|\s]+/g, '_') + '.pdf'; }
+function footerImg(text){ const c = document.createElement('canvas'); c.width = 794 * 2; c.height = 40; const x = c.getContext('2d'); x.scale(2, 2); x.font = '11px Heebo, Arial, sans-serif'; x.fillStyle = '#667085'; x.direction = 'rtl'; x.textAlign = 'center'; x.fillText(text, 397, 13); return c.toDataURL('image/png'); }
+async function makePDF(form, sub, sc){
+  await loadPdfLibs();
+  const html = form === undefined ? renderDoc(undefined, undefined, undefined, false) : renderDoc(form, sub || null, sc || [], false);
+  const f = form || collect(), S = 2;
+  const el = document.createElement('div'); el.className = 'pdfdoc'; el.id = 'pdfdoc'; el.innerHTML = html; document.body.appendChild(el);
+  try {
+    await Promise.all([...el.querySelectorAll('img')].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+    try { await document.fonts.ready; } catch(e){}
+    const base = el.getBoundingClientRect().top, total = Math.ceil(el.scrollHeight), pts = new Set();
+    el.querySelectorAll('.ph, h2, table, tr, p, .crit, .draft, li').forEach(n => { const r = n.getBoundingClientRect(); pts.add(Math.round(r.top - base)); pts.add(Math.round(r.bottom - base)); });
+    const breaks = [...pts].filter(y => y > 0 && y < total).sort((a, b) => a - b);
+    const canvas = await window.html2canvas(el, { scale:S, backgroundColor:'#ffffff', logging:false, useCORS:true, onclone: d => { const c = d.getElementById('pdfdoc'); if (c) c.style.left = '0'; } });
+    const PAGE_H = 1123, TOP = 34, BOT = 46, CONTENT = PAGE_H - TOP - BOT, pages = [];
+    let y = 0;
+    while (y < total - 1){
+      const end = y + CONTENT;
+      if (end >= total){ pages.push([y, total]); break; }
+      const cand = breaks.filter(b => b > y + 150 && b <= end);
+      const cut = cand.length ? cand[cand.length - 1] : end;
+      pages.push([y, cut]); y = cut;
+    }
+    const pdf = new window.jspdf.jsPDF({ unit:'pt', format:'a4', compress:true }), k = 595.28 / 794;
+    pages.forEach(([a, b], i) => {
+      if (i) pdf.addPage();
+      const c = document.createElement('canvas'); c.width = 794 * S; c.height = Math.max(1, Math.ceil((b - a) * S));
+      c.getContext('2d').drawImage(canvas, 0, a * S, 794 * S, (b - a) * S, 0, 0, c.width, c.height);
+      pdf.addImage(c.toDataURL('image/jpeg', 0.9), 'JPEG', 0, TOP * k, 595.28, (b - a) * k);
+      pdf.addImage(footerImg(`CX-Electra · ${sub && sub.id ? sub.id : submission && !form ? submission.id : 'טיוטה'} · עמוד ${i + 1} מתוך ${pages.length}`), 'PNG', 0, (PAGE_H - BOT + 14) * k, 595.28, 20 * k);
+    });
+    return new File([pdf.output('blob')], pdfName(f), { type:'application/pdf' });
+  } finally { el.remove(); }
+}
+let lastPdf = null;
+function downloadFile(file){ const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000); }
+async function sharePDF(rec){
+  const ov = $('#pdfOverlay'); ov.hidden = false;
+  ['#pdfShareNow', '#pdfDl', '#pdfWeb'].forEach(s => $(s).hidden = true);
+  $('#pdfMsg').textContent = 'מכין PDF…';
+  let file;
+  try { file = rec ? await makePDF(rec.form, rec.submission || null, rec.scans || []) : await makePDF(); }
+  catch(e){ console.warn(e); $('#pdfMsg').textContent = navigator.onLine ? 'יצירת ה-PDF נכשלה. נסה שוב.' : 'בפעם הראשונה צריך קליטה כדי לטעון את מחולל ה-PDF. אחרי זה הוא עובד גם בלי קליטה.'; return; }
+  lastPdf = file;
+  if (navigator.canShare && navigator.canShare({ files:[file] })){
+    try { await navigator.share({ files:[file], title:file.name }); ov.hidden = true; return; }
+    catch(e){ if (e && e.name === 'AbortError'){ ov.hidden = true; return; } }
+    $('#pdfMsg').textContent = 'ה-PDF מוכן לשליחה'; $('#pdfShareNow').hidden = false; $('#pdfDl').hidden = false; return;
+  }
+  downloadFile(file);
+  $('#pdfMsg').textContent = 'ה-PDF ירד למכשיר. בוואטסאפ: 📎 ← מסמך ← בחרו את הקובץ.';
+  $('#pdfWeb').hidden = false;
+}
+
+/* ================= אזור מנהל ================= */
+function codeHash(c){ let h = 5381; const s = 'cxe-admin:' + c; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(16); }
+function adminUntil(){ try { return +sessionStorage.getItem('cxe_admin_until') || 0; } catch(e){ return 0; } }
+function isAdmin(){ return adminUntil() > Date.now(); }
+function setAdmin(on){ try { if (on) sessionStorage.setItem('cxe_admin_until', Date.now() + CONFIG.ADMIN_MINUTES * 60000); else sessionStorage.removeItem('cxe_admin_until'); } catch(e){} applyAdmin(); }
+function applyAdmin(){
+  const a = isAdmin();
+  $('#adminArea').hidden = !a; $('#adminLock').hidden = a;
+  if (a) $('#adminBarTxt').textContent = `אזור מנהל פתוח · ננעל אוטומטית בעוד ${fmtDur(adminUntil() - Date.now())}`;
+}
+let adminCb = null, adminFails = 0, adminBlockedUntil = 0;
+function requireAdmin(cb){
+  if (isAdmin()){ if (cb) cb(); return; }
+  adminCb = cb || null; $('#adminCode').value = ''; $('#adminErr').textContent = '';
+  $('#adminOverlay').hidden = false; setTimeout(() => $('#adminCode').focus(), 60);
+}
+function tryAdmin(){
+  if (Date.now() < adminBlockedUntil){ $('#adminErr').textContent = `יותר מדי ניסיונות. נסה שוב בעוד ${Math.ceil((adminBlockedUntil - Date.now()) / 1000)} שניות`; return; }
+  if (codeHash($('#adminCode').value.trim()) === CONFIG.ADMIN_HASH){
+    adminFails = 0; $('#adminOverlay').hidden = true; setAdmin(true); toast(`אזור המנהל פתוח ל-${CONFIG.ADMIN_MINUTES} דקות`);
+    const cb = adminCb; adminCb = null; if (cb) cb();
+  } else {
+    adminFails++; haptic([60, 60, 60]); $('#adminCode').value = '';
+    if (adminFails >= 5){ adminBlockedUntil = Date.now() + 60000; adminFails = 0; $('#adminErr').textContent = 'יותר מדי ניסיונות שגויים — נעול לדקה'; }
+    else $('#adminErr').textContent = 'קוד שגוי';
+  }
 }
 
 /* ================= טיימר וסריקות ================= */
@@ -1888,6 +2115,7 @@ function tick(){
   $('#timerStart').textContent = timer.remaining ? 'המשך' : 'הפעלת טיימר';
   $('#timerStart').disabled = !!closed;
   if (submission){ const end = submission.closedAt ? new Date(submission.closedAt) : Date.now(); $('#statElapsed').textContent = fmtDur(end - new Date(submission.at)); }
+  if (isAdmin() || !$('#adminArea').hidden) applyAdmin();
   checkBackgroundTimers();
   if (view === 'home') updateHomeTimers();
   updateTimerPill();
@@ -2002,7 +2230,12 @@ function bind(){
     const act = e.target.closest('[data-act]');
     if (act){
       const wEl = act.closest('.worker'), w = workers.find(x => x.el === wEl); if (!w) return;
-      if (act.dataset.act === 'clear') w.pad.clear();
+      if (seal) return toast('הצ\'קליסט חתום ומאובטח — לא ניתן לשנות אותו');
+      if (act.dataset.act === 'clear'){
+        if (w.signedAt) return requireAdmin(() => { unlockWorker(w); w.pad.clear(); toast('החתימה נמחקה — העובד יכול לחתום מחדש'); });
+        w.pad.clear();
+      }
+      if (act.dataset.act === 'remove' && w.signedAt && !isAdmin()){ requireAdmin(() => act.click()); return; }
       if (act.dataset.act === 'remove'){
         const has = $('[data-f=name]', w.el).value || w.pad.data;
         if (has && !confirm('להסיר את העובד והחתימה שלו?')) return;
@@ -2017,18 +2250,18 @@ function bind(){
     const hf = e.target.closest('[data-hf]'); if (hf){ homeFilter = hf.dataset.hf; renderHome(); return; }
     const hs = e.target.closest('[data-hs]'); if (hs){ homeSite = hs.dataset.hs; renderHome(); return; }
     const rv = e.target.closest('[data-rev]'); if (rv){ restoreRev(rv.dataset.rev); return; }
-    const ud = e.target.closest('[data-undel]'); if (ud){ window.FBX.mark(settings.teamKey, ud.dataset.undel, { deleted:false, deletedAt:null }).then(() => toast('שוחזר מסל המחזור')).catch(err => toast(teamErrText(err))); homeFilter = 'all'; return; }
+    const ud = e.target.closest('[data-undel]'); if (ud){ const uid2 = ud.dataset.undel; requireAdmin(() => { window.FBX.mark(settings.teamKey, uid2, { deleted:false, deletedAt:null }).then(() => toast('שוחזר מסל המחזור')).catch(err => toast(teamErrText(err))); homeFilter = 'all'; }); return; }
     const ot = e.target.closest('[data-open-team]'); if (ot){ openFromTeam(ot.dataset.openTeam); return; }
     const scp = e.target.closest('[data-scope]'); if (scp){ homeScope = scp.dataset.scope; renderHome(); return; }
     const lc = e.target.closest('[data-lc]');
     if (lc){
       const id = lc.dataset.id, act = lc.dataset.lc;
-      if (act === 'del') return deleteChecklist(id);
+      if (act === 'del') return requireAdmin(() => deleteChecklist(id));
       if (act === 'dup') return newChecklist(id);
-      if (act === 'print-team'){ try { const r = await pullRecord(id); if (r) printDoc(r); else toast('לא נמצא בענן'); } catch(err){ toast(teamErrText(err)); } return; }
+      if (act === 'print-team'){ try { const r = await pullRecord(id); if (r) sharePDF(r); else toast('לא נמצא בענן'); } catch(err){ toast(teamErrText(err)); } return; }
       const rec = id === activeId ? activeRecord() : await IDB.get('lists', id); if (!rec) return;
-      if (act === 'print') printDoc(rec);
-      if (act === 'file') downloadJSON(backupObject(rec.form, rec.submission, rec.scans), backupName(rec.form));
+      if (act === 'print') sharePDF(id === activeId ? undefined : rec);
+      if (act === 'file') requireAdmin(() => downloadJSON(backupObject(rec.form, rec.submission, rec.scans), backupName(rec.form)));
       return;
     }
     if (e.target.id === 'flushBtn') flushQueue(true);
@@ -2043,7 +2276,15 @@ function bind(){
   $('#mgrClear').onclick = () => mgrPad.clear();
   $('#sendBtn').onclick = submitForm;
   $('#printBtn').onclick = () => printDoc();
-  $('#waBtn').onclick = shareWhatsApp;
+  $('#waBtn').onclick = () => sharePDF();
+  $('#pdfClose').onclick = () => { $('#pdfOverlay').hidden = true; };
+  $('#pdfShareNow').onclick = async () => { if (!lastPdf) return; try { await navigator.share({ files:[lastPdf], title:lastPdf.name }); $('#pdfOverlay').hidden = true; } catch(e){ if (!e || e.name !== 'AbortError') toast('השיתוף נכשל — נסה "הורדה למכשיר"'); } };
+  $('#pdfDl').onclick = () => { if (lastPdf) downloadFile(lastPdf); };
+  $('#adminOk').onclick = tryAdmin;
+  $('#adminCode').addEventListener('keydown', e => { if (e.key === 'Enter') tryAdmin(); });
+  $('#adminCancel').onclick = () => { adminCb = null; $('#adminOverlay').hidden = true; };
+  $('#adminOpenBtn').onclick = () => requireAdmin();
+  $('#adminLockBtn').onclick = () => { setAdmin(false); toast('אזור המנהל ננעל'); };
   window.addEventListener('beforeprint', () => { if (!$('#printArea').innerHTML) buildPrint(); });
   window.addEventListener('afterprint', () => { $('#printArea').innerHTML = ''; });
   $('#newFormBtn').onclick = () => newChecklist();
@@ -2076,17 +2317,18 @@ function bind(){
     try { if (navigator.share){ await navigator.share({ title:'CX-Electra', text, url }); return; } } catch(e){ if (e && e.name === 'AbortError') return; }
     try { await navigator.clipboard.writeText(url); toast('קישור ההצטרפות הועתק'); } catch(e){ prompt('העתק את הקישור:', url); }
   };
-  $('#teamHintBtn').onclick = () => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); $('#setTeam').focus(); }, 120); };
+  $('#teamHintBtn').onclick = () => requireAdmin(() => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); $('#setTeam').focus(); }, 120); });
   $('#conflictLoad').onclick = () => openFromTeam(activeId);
   $('#diagBtn').onclick = runDiagnostics;
   $('#revBtn').onclick = loadRevs;
   $('#stTeam').onclick = () => {
     if (isConnected()){ const n = unbackedCount(); toast(n ? `מחובר לענן — ${n} צ'קליסטים בהעלאה` : 'מחובר לענן — כל הצ\'קליסטים מגובים'); return; }
     if (!navigator.onLine) return toast('אין קליטה — הצ\'קליסטים שמורים במכשיר ויעלו לענן כשהקליטה תחזור');
+    if (!isAdmin()) return toast('לא מחובר לענן. הצ\'קליסטים נשמרים במכשיר. מנהל יכול לבדוק באזור המנהל בשלב 5.');
     showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); runDiagnostics(); }, 150);
   };
   $('#restoreAllBtn').onclick = restoreAllFromCloud;
-  $('#cloudAlertBtn').onclick = () => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); runDiagnostics(); }, 150); };
+  $('#cloudAlertBtn').onclick = () => requireAdmin(() => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); runDiagnostics(); }, 150); });
   window.addEventListener('fbx-ready', cloudStart);
   window.addEventListener('fbx-failed', updateIndicators);
   $('#saveSettingsBtn').onclick = () => {
@@ -2160,7 +2402,8 @@ async function init(){
     }
   }
   bind();
-  if (submission) lockForm(true);
+  if (submission || seal) lockForm(true);
+  verifySeal();
   let ss = {}; try { ss = { v: sessionStorage.getItem('cxe_view'), s: +sessionStorage.getItem('cxe_step') || 0 }; sessionStorage.removeItem('cxe_step'); } catch(e){}
   let start = ss.s || (saved && saved.step) || 1;
   if (start === 6 && !canMonitor()) start = 5;
@@ -2188,7 +2431,7 @@ document.addEventListener('click', async e => { if (e.target.id !== 'installBtn'
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')){
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
-init().then(() => { const v = $('#verTxt'); if (v) v.textContent = CONFIG.APP_VERSION; fillDatalists(); });
+init().then(() => { applyAdmin(); setTimeout(() => { if (navigator.onLine) loadPdfLibs().catch(() => {}); }, 5000); const v = $('#verTxt'); if (v) v.textContent = CONFIG.APP_VERSION; fillDatalists(); });
 </script>
 <script type="module">
 /* ================= Firebase — סנכרון צוות ================= */
@@ -2217,6 +2460,12 @@ if (!window.FBX) try {
   window.FBX = {
     ready,
     save: (t, id, data) => F.setDoc(cdoc(t, id), data),
+    saveAll(t, id, data, sigs){
+      const b = F.writeBatch(db);
+      sigs.forEach(s => b.set(F.doc(db, 'teams', t, 'checklists', id, 'sigs', s.key), { data: s.data, at: Date.now() }));
+      b.set(cdoc(t, id), data);
+      return b.commit();
+    },
     saveSig: (t, id, key, data) => F.setDoc(F.doc(db, 'teams', t, 'checklists', id, 'sigs', key), { data, at: Date.now() }),
     async load(t, id){
       const s = await F.getDoc(cdoc(t, id)); if (!s.exists()) return null;
