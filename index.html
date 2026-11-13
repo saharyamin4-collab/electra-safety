@@ -7,7 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <title>CX-Electra | בטיחות בבדיקות בעומס</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235b8cff'/%3E%3Cstop offset='1' stop-color='%232346e0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='44' height='44' rx='13' fill='url(%23g)'/%3E%3Cpath d='M27 9.5 15.5 27h8l-2.5 11.5L33 21h-8.3Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"%3E%3Cdefs%3E%3ClinearGradient id="bgF" x1="0" y1="0" x2="1" y2="1"%3E%3Cstop offset="0" stop-color="%23121b33"/%3E%3Cstop offset="1" stop-color="%23070b16"/%3E%3C/linearGradient%3E%3ClinearGradient id="arcF" x1="0" y1="1" x2="1" y2="0"%3E%3Cstop offset="0" stop-color="%232ee6ff"/%3E%3Cstop offset="1" stop-color="%233b5bff"/%3E%3C/linearGradient%3E%3CradialGradient id="glF" cx=".5" cy=".5" r=".5"%3E%3Cstop offset="0" stop-color="%232ee6ff" stop-opacity=".9"/%3E%3Cstop offset="1" stop-color="%232ee6ff" stop-opacity="0"/%3E%3C/radialGradient%3E%3ClinearGradient id="hlF" x1="0" y1="0" x2="0" y2="1"%3E%3Cstop offset="0" stop-color="%23fff" stop-opacity=".16"/%3E%3Cstop offset=".45" stop-color="%23fff" stop-opacity="0"/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x="2" y="2" width="44" height="44" rx="13" fill="url%28%23bgF%29"/%3E%3Crect x="2" y="2" width="44" height="44" rx="13" fill="url%28%23hlF%29"/%3E%3Crect x="2.4" y="2.4" width="43.2" height="43.2" rx="12.6" fill="none" stroke="%23fff" stroke-opacity=".1" stroke-width=".8"/%3E%3Ccircle cx="24" cy="24" r="13.5" fill="none" stroke="%23fff" stroke-opacity=".1" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="65.97 100" transform="rotate%28130 24 24%29"/%3E%3Ccircle cx="24" cy="24" r="13.5" fill="none" stroke="url%28%23arcF%29" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="47.1 100" transform="rotate%28130 24 24%29"/%3E%3Ccircle cx="35.69" cy="17.25" r="4.2" fill="url%28%23glF%29"/%3E%3Ccircle cx="35.69" cy="17.25" r="1.5" fill="%23e9fdff"/%3E%3Cpath d="M26.4 13.2 17.6 25.9h6.5l-2.1 9.2 8.9-12.9h-6.7z" fill="%23fff"/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -55,7 +57,7 @@ button,input,textarea,select{font-family:inherit}
 .app-head{position:sticky;top:0;z-index:30;background:var(--head-bg);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px);border-bottom:1px solid var(--border);padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px}
 .wrap{max-width:820px;margin:0 auto}
 .head-row{display:flex;align-items:center;gap:10px}
-.logo{flex:0 0 auto;width:42px;height:42px;display:block;filter:drop-shadow(0 8px 14px rgba(43,84,230,.38))}
+.logo{flex:0 0 auto;width:42px;height:42px;display:block;filter:drop-shadow(0 6px 12px rgba(7,11,22,.28))}
 .brand{flex:1;min-width:0;line-height:1.15}
 .wm{direction:ltr;display:inline-flex;align-items:baseline;gap:5px;font-weight:900;font-size:clamp(15px,4.6vw,21px);letter-spacing:.02em;white-space:nowrap}
 .wm .cx{color:var(--blue)}
@@ -206,6 +208,7 @@ input:disabled,textarea:disabled{opacity:.7}
 .btn-danger{background:linear-gradient(135deg,#ff5a6e,#d4142b);border-color:transparent;color:#fff;box-shadow:0 14px 30px -14px rgba(212,20,43,.7)}
 .btn-ok{background:linear-gradient(135deg,#32d583,#079455);border-color:transparent;color:#fff;box-shadow:0 14px 30px -14px rgba(7,148,85,.7)}
 .btn-block{width:100%}
+.btn-wa{background:#25D366;border-color:#25D366;color:#fff;box-shadow:0 14px 30px -14px rgba(37,211,102,.75)}
 .btn-sm{min-height:44px;font-size:15px;padding:8px 14px;border-radius:14px}
 .btn-quiet-danger{color:var(--danger);border-color:transparent;background:transparent;box-shadow:none}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap}
@@ -297,6 +300,10 @@ details.panel[open] summary{margin-bottom:14px}
 .cgroup.danger{color:var(--danger)}
 .contact{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 14px;border:1px solid var(--border);border-radius:18px;margin-bottom:8px;text-decoration:none;color:var(--text);background:var(--surface-2)}
 .contact.danger{border-color:rgba(229,38,61,.4);background:var(--danger-bg)}
+.diag-ok{color:var(--ok-ink);font-weight:900}
+.diag-bad{color:var(--danger);font-weight:900}
+.diag-wait{color:var(--muted);font-weight:900}
+.contact.nonum{opacity:.6;border-style:dashed}
 .c-info{flex:1;display:flex;flex-direction:column;line-height:1.3}
 .c-info strong{font-weight:800}
 .c-info small{color:var(--muted);font-size:13px}
@@ -394,7 +401,7 @@ body[data-view="form"] .home-only{display:none!important}
 <header class="app-head">
   <div class="wrap">
     <div class="head-row">
-      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lgHead" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset=".55" stop-color="#3a62f2"/><stop offset="1" stop-color="#2346e0"/></linearGradient><linearGradient id="lgHeadh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lgHead)"/><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lgHeadh)"/><path d="M27 9.5 15.5 27h8l-2.5 11.5L33 21h-8.3Z" fill="#fff"/><circle cx="36.5" cy="11.5" r="2.6" fill="#7ee3ff"/></svg>
+      <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bgH" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#121b33"/><stop offset="1" stop-color="#070b16"/></linearGradient><linearGradient id="arcH" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2ee6ff"/><stop offset="1" stop-color="#3b5bff"/></linearGradient><radialGradient id="glH" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2ee6ff" stop-opacity=".9"/><stop offset="1" stop-color="#2ee6ff" stop-opacity="0"/></radialGradient><linearGradient id="hlH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#bgH)"/><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#hlH)"/><rect x="2.4" y="2.4" width="43.2" height="43.2" rx="12.6" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width=".8"/><circle cx="24" cy="24" r="13.5" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="65.97 100" transform="rotate(130 24 24)"/><circle cx="24" cy="24" r="13.5" fill="none" stroke="url(#arcH)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="47.1 100" transform="rotate(130 24 24)"/><circle cx="35.69" cy="17.25" r="4.2" fill="url(#glH)"/><circle cx="35.69" cy="17.25" r="1.5" fill="#e9fdff"/><path d="M26.4 13.2 17.6 25.9h6.5l-2.1 9.2 8.9-12.9h-6.7z" fill="#fff"/></svg>
       <div class="brand">
         <div class="wm" aria-label="CX Electra"><b class="cx">CX</b><i class="sl">/</i><b class="el">ELECTRA</b></div>
         <div class="tag" id="siteSub">בטיחות בבדיקות בעומס</div>
@@ -405,10 +412,10 @@ body[data-view="form"] .home-only{display:none!important}
       </div>
         </div>
     <div class="status-row" aria-live="polite">
-      <span class="st" id="stNet"><i class="dot"></i><span>—</span></span>
-      <span class="st" id="stSync"><i class="dot"></i><span>—</span></span>
-      <span class="st" id="stTeam"><i class="dot"></i><span>—</span></span>
-      <span class="st" id="stSave"><i class="dot"></i><span>—</span></span>
+      <span class="st" id="stNet" style="display:none"><i class="dot"></i><span></span></span>
+      <span class="st" id="stSync" style="display:none"><i class="dot"></i><span></span></span>
+      <span class="st" id="stSave" style="display:none"><i class="dot"></i><span></span></span>
+      <button type="button" class="st" id="stTeam"><i class="dot"></i><span>—</span></button>
       <button type="button" class="st st-timer" id="stTimer" hidden><i class="dot"></i><span></span></button>
     </div>
     <nav class="tabs form-only" id="tabs" role="tablist" aria-label="שלבי הטופס"></nav>
@@ -416,12 +423,13 @@ body[data-view="form"] .home-only{display:none!important}
 </header>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gMini" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22c3ee"/><stop offset="1" stop-color="#2b54e6"/></linearGradient></defs></svg>
+<datalist id="dlPeople"></datalist><datalist id="dlWorkers"></datalist>
 <main id="main">
   <section id="homeView" class="home-only" aria-labelledby="homeT">
     <div class="hero">
       <div class="hero-top">
         <h1 id="homeT">תמונת מצב<br><span class="grad">הצ'קליסטים שלי</span></h1>
-        <button type="button" class="icon-btn" id="themeBtn" aria-label="מצב תצוגה"></button>
+        <span style="display:flex;gap:8px"><button type="button" class="btn btn-sm btn-primary" id="installBtn" hidden>התקנה</button><button type="button" class="icon-btn" id="themeBtn" aria-label="מצב תצוגה"></button></span>
       </div>
       <p>כל הצ'קליסטים שבמכשיר נשמרים כאן — טיוטות, בניטור ושהושלמו. לחיצה על כרטיס ממשיכה בדיוק מאיפה שעצרת.</p>
     </div>
@@ -432,6 +440,10 @@ body[data-view="form"] .home-only{display:none!important}
       <div class="hstat" id="hmExcBox"><b id="hmExc">0</b><span>חריגות</span></div>
     </div>
     <div class="filters" id="scopeFilters"></div>
+    <div class="alert alert-danger" id="cloudAlert" hidden style="display:flex;gap:12px;align-items:center">
+      <span style="flex:1"><b>הגיבוי לענן לא פעיל</b><br><span id="cloudAlertTxt" class="hint" style="margin:0"></span></span>
+      <button type="button" class="btn btn-sm btn-danger" id="cloudAlertBtn">אבחון ותיקון</button>
+    </div>
     <div class="panel" id="teamHint" hidden style="display:flex;gap:12px;align-items:center">
       <span style="flex:1"><b>רוצה לראות את כל הצוות?</b><br><span class="hint" style="margin:0">חבר קוד צוות, וכל הצ'קליסטים מכל המכשירים יופיעו כאן.</span></span>
       <button type="button" class="btn btn-sm btn-primary" id="teamHintBtn">חיבור</button>
@@ -548,6 +560,7 @@ body[data-view="form"] .home-only{display:none!important}
         <button type="button" class="btn btn-primary" id="sendBtn">שליחת הטופס</button>
         <button type="button" class="btn" id="printBtn">הדפסה / PDF</button>
       </div>
+      <button type="button" class="btn btn-wa btn-block" id="waBtn" style="margin-bottom:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.3-.6-2.2-1.2-3.1-2.6-.2-.4.2-.4.7-1.2.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/></svg>שיתוף בוואטסאפ</button>
       <div id="sendStatus"></div>
     </div>
 
@@ -557,8 +570,8 @@ body[data-view="form"] .home-only{display:none!important}
         <div id="hSave"><i></i><span>שמירה במכשיר</span><small></small></div>
         <div id="hIdb"><i></i><span>גיבוי כפול פנימי</span><small></small></div>
         <div id="hPersist"><i></i><span>אחסון מוגן ממחיקה</span><small></small></div>
-        <div id="hTeam"><i></i><span>סנכרון צוות</span><small></small></div>
-        <div id="hCloud"><i></i><span>ענן</span><small></small></div>
+        <div id="hTeam"><i></i><span>גיבוי ענן (Firebase)</span><small></small></div>
+        <div id="hCloud"><i></i><span>Google Sheets</span><small></small></div>
       </div>
       <div class="btn-row">
         <button type="button" class="btn btn-sm" id="exportBtn">הורדת קובץ גיבוי</button>
@@ -577,8 +590,8 @@ body[data-view="form"] .home-only{display:none!important}
     </div>
 
     <div class="panel" id="teamPanel">
-      <h3>סנכרון צוות <span class="count" id="teamCount">כבוי</span></h3>
-      <p class="hint" style="margin:0 0 12px">כל מכשיר עם אותו קוד צוות רואה בתמונת המצב את הצ'קליסטים של כולם, וממשיך צ'קליסט שהתחיל במכשיר אחר. בלי קליטה — הכול נשמר ונשלח כשהקליטה חוזרת.</p>
+      <h3>גיבוי ענן וסנכרון צוות <span class="count" id="teamCount">כבוי</span></h3>
+      <p class="hint" style="margin:0 0 12px">כל צ'קליסט מגובה אוטומטית בשרתי Google (Firebase). מכשיר שאבד או נמחק? פותחים את קישור ההצטרפות במכשיר חדש ומשחזרים הכול. כל מי שמחובר לאותו קוד רואה את הצ'קליסטים של כולם.</p>
       <div class="field">
         <label class="lbl" for="setTeam">קוד צוות</label>
         <input type="text" id="setTeam" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="לפחות 16 תווים" style="direction:ltr;text-align:right">
@@ -592,10 +605,19 @@ body[data-view="form"] .home-only{display:none!important}
         <button type="button" class="btn btn-sm" id="genTeamBtn">יצירת קוד חדש</button>
         <button type="button" class="btn btn-sm" id="shareTeamBtn">שיתוף קישור הצטרפות</button>
       </div>
+      <div class="btn-row" style="margin-top:10px">
+        <button type="button" class="btn btn-sm" id="diagBtn">בדיקת חיבור לענן</button>
+        <button type="button" class="btn btn-sm" id="restoreAllBtn">שחזור כל הצ'קליסטים מהענן</button>
+      </div>
       <p class="hint" id="teamMsg"></p>
+      <ul class="list" id="diagList" hidden></ul>
+      <p class="sub-h">היסטוריית גרסאות בענן — הצ'קליסט הפתוח</p>
+      <p class="hint" style="margin:0 0 8px">כל שליחה, סריקה, סיום ועריכה (לפחות כל 5 דקות) נשמרים כגרסה בענן שאי אפשר למחוק או לשנות. אפשר לחזור לכל גרסה.</p>
+      <button type="button" class="btn btn-sm btn-block" id="revBtn">הצגת גרסאות קודמות</button>
+      <ul class="list" id="revList" hidden></ul>
     </div>
     <details class="panel">
-      <summary>הגדרות</summary>
+      <summary>הגדרות <span class="pill" style="margin-inline-start:6px">גרסה <span id="verTxt"></span></span></summary>
       <div class="field">
         <label class="lbl" for="setUrl">כתובת ה-Web App של Google Apps Script</label>
         <input type="url" id="setUrl" placeholder="https://script.google.com/macros/s/.../exec">
@@ -736,14 +758,14 @@ body[data-view="form"] .home-only{display:none!important}
 const CONFIG = {
   DEFAULT_WEBHOOK_URL: '',      // ניתן להדביק כאן את כתובת ה-Web App, או להזין במסך ההגדרות
   SCAN_INTERVAL_MIN: 15,
-  APP_VERSION: '2.0.0',
+  APP_VERSION: '3.0.0',
   SNAPSHOT_EVERY_MS: 3 * 60000, // נקודת שחזור אוטומטית לכל היותר כל 3 דקות
   SNAPSHOT_KEEP: 10,
   ARCHIVE_KEEP: 40
 };
 const K = { form:'cxe_form_v1', settings:'cxe_settings_v1', queue:'cxe_queue_v1', scans:'cxe_scans_v1', timer:'cxe_timer_v1', sub:'cxe_submission_v1', lastSync:'cxe_lastsync_v1', active:'cxe_active_v3', index:'cxe_index_v3' };
 const PHASES = ['עומס רציף', 'פריקה', 'מעבר לטעינה', 'טעינה'];
-const LOGO_SVG = '<svg viewBox="0 0 48 48"><defs><linearGradient id="lgPrint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset=".55" stop-color="#3a62f2"/><stop offset="1" stop-color="#2346e0"/></linearGradient><linearGradient id="lgPrinth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lgPrint)"/><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#lgPrinth)"/><path d="M27 9.5 15.5 27h8l-2.5 11.5L33 21h-8.3Z" fill="#fff"/><circle cx="36.5" cy="11.5" r="2.6" fill="#7ee3ff"/></svg>';
+const LOGO_SVG = '<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bgP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#121b33"/><stop offset="1" stop-color="#070b16"/></linearGradient><linearGradient id="arcP" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2ee6ff"/><stop offset="1" stop-color="#3b5bff"/></linearGradient><radialGradient id="glP" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2ee6ff" stop-opacity=".9"/><stop offset="1" stop-color="#2ee6ff" stop-opacity="0"/></radialGradient><linearGradient id="hlP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#bgP)"/><rect x="2" y="2" width="44" height="44" rx="13" fill="url(#hlP)"/><rect x="2.4" y="2.4" width="43.2" height="43.2" rx="12.6" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width=".8"/><circle cx="24" cy="24" r="13.5" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="65.97 100" transform="rotate(130 24 24)"/><circle cx="24" cy="24" r="13.5" fill="none" stroke="url(#arcP)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="47.1 100" transform="rotate(130 24 24)"/><circle cx="35.69" cy="17.25" r="4.2" fill="url(#glP)"/><circle cx="35.69" cy="17.25" r="1.5" fill="#e9fdff"/><path d="M26.4 13.2 17.6 25.9h6.5l-2.1 9.2 8.9-12.9h-6.7z" fill="#fff"/></svg>';
 
 const TEST_TYPES = ['בדיקת עומסים רציפה (Load Bank)', 'פריקה וטעינת מצברים (UPS)', 'אחר'];
 const ROLES = [
@@ -803,11 +825,11 @@ const SITES = {
       {name:'סהר ימין',role:'מנהל מחלקת קומישנינג',num:'052-3181597'},
       {name:'סרגי',role:'מנהל פרויקט חשמל',num:'054-5449320'},
       {name:'רומן פלדמן',role:'מנהל פרויקט ראשי',num:'054-4951157'} ] },
-    { group:'מנהלי עבודה', items:[
-      {name:'אבי',role:'מנהל עבודה — יום',num:'052-5692582'},
-      {name:'אבו בדר',role:'מנהל עבודה — לילה',num:'054-9706500'} ] },
-    { group:'ממונה בטיחות', items:[
-      {name:'ירין',role:'ממונה בטיחות',num:'050-7368887'} ] },
+    { group:'מנהל עבודה', items:[
+      {name:'ירין',role:'מנהל עבודה',num:'052-2550954'} ] },
+    { group:'ממוני בטיחות', items:[
+      {name:'ערן קרבר',role:'ממונה בטיחות',num:'050-7368887'},
+      {name:'נזר אברהמי',role:'ממונה בטיחות',num:'050-4399902'} ] },
     casualty({name:'אסף אבוחצרה',role:'מנהל סניף',num:'052-6758987'})
   ]
 };
@@ -952,7 +974,8 @@ function contactsHTML(site){
   const note = SITES[site] ? '' : '<p class="hint" style="margin:0 0 12px">בחרו אתר בשלב 1 כדי להציג את אנשי הקשר של האתר.</p>';
   return note + groups.map(g => {
     if (g.urgent) return `<div class="dial-grid">${g.items.map(i => `<a class="dial" href="tel:${i.num}"><span class="dial-num">${i.num}</span><span>${esc(i.name)}</span></a>`).join('')}</div>`;
-    return `<h3 class="cgroup ${g.danger ? 'danger' : ''}">${esc(g.group)}</h3>` + g.items.map(i =>
+    return `<h3 class="cgroup ${g.danger ? 'danger' : ''}">${esc(g.group)}</h3>` + g.items.map(i => !digits(i.num) ?
+      `<div class="contact nonum"><span class="c-info"><strong>${esc(i.name)}</strong><small>${esc(i.role)}</small></span><span class="c-num">חסר מספר</span></div>` :
       `<a class="contact ${g.danger ? 'danger' : ''}" href="tel:${digits(i.num)}"><span class="c-info"><strong>${esc(i.name)}</strong><small>${esc(i.role)}</small></span><span class="c-num">${i.num}</span><span class="c-call" aria-hidden="true">📞</span></a>`).join('');
   }).join('');
 }
@@ -975,7 +998,7 @@ function buildUI(){
     <div class="panel role${r.emergency ? ' emerg' : ''}" id="${r.key}_card">
       <div class="role-head"><span class="role-num">${r.emergency ? r.num : (r.key === 'r1' ? '★' : '🌡')}</span><span class="role-title">${esc(r.title)}</span><a class="call-mini" id="${r.key}_call" hidden aria-label="חיוג">📞</a></div>
       <div class="grid2">
-        <div><label class="lbl" for="${r.key}_name">שם מלא <span class="req">*</span></label><input type="text" id="${r.key}_name" autocomplete="off"></div>
+        <div><label class="lbl" for="${r.key}_name">שם מלא <span class="req">*</span></label><input type="text" id="${r.key}_name" autocomplete="off" list="dlPeople" data-role-name="${r.key}"></div>
         <div><label class="lbl" for="${r.key}_phone">טלפון <span class="req">*</span></label><input type="tel" id="${r.key}_phone" inputmode="tel" placeholder="05X-XXXXXXX"></div>
       </div>
     </div>`;
@@ -996,7 +1019,7 @@ function addWorker(data){
   el.innerHTML = `
     <div class="worker-head"><strong class="w-title">עובד</strong><button type="button" class="btn btn-sm btn-quiet-danger" data-act="remove">הסרה</button></div>
     <div class="grid2 field">
-      <div><label class="lbl" for="w_${id}_name">שם מלא <span class="req">*</span></label><input type="text" id="w_${id}_name" data-f="name" autocomplete="off"></div>
+      <div><label class="lbl" for="w_${id}_name">שם מלא <span class="req">*</span></label><input type="text" id="w_${id}_name" data-f="name" autocomplete="off" list="dlWorkers"></div>
       <div><label class="lbl" for="w_${id}_idc">ת.ז / חברה <span class="req">*</span></label><input type="text" id="w_${id}_idc" data-f="idc" autocomplete="off"></div>
     </div>
     <div class="sig-wrap" id="w_${id}_sig"><canvas aria-label="משטח חתימת עובד"></canvas><div class="sig-line"></div><div class="sig-hint">חתימה באצבע או בעט</div><span class="sig-ok">✓ נחתם</span></div>
@@ -1097,6 +1120,7 @@ function validateData(s){
 
 /* ================= מודל צ'קליסטים מרובים ================= */
 const STATUS_UI = { draft:['', 'טיוטה'], monitor:['blue', 'בניטור'], done:['ok', 'הושלם'] };
+const trashUI = ['bad', 'בסל המחזור'];
 function pctOf(s, errors){ const total = 7 + ROLES.length * 2 + CHECKS.length + 2 + Math.max(1, s.workers.length * 3); return errors.length ? Math.max(0, Math.min(99, Math.round((1 - errors.length / total) * 100))) : 100; }
 function statusOf(sub, form){ if (!sub) return 'draft'; const load = sub.load ?? isLoad(form || {}); return load && !sub.closedAt ? 'monitor' : 'done'; }
 function normForm(f){
@@ -1120,9 +1144,10 @@ function upsertMeta(m){ const i = index.findIndex(x => x.id === m.id); if (i >= 
 async function persistActive(){
   if (switching) return null;
   const rec = activeRecord();
-  saveOk = LS.set(K.form, rec.form); lastSavedAt = Date.now();
+  saveOk = LS.set(K.form, rec.form);
+  learnPeople(rec.form); lastSavedAt = Date.now();
   upsertMeta(metaOf(rec));
-  scheduleCloud(rec);
+  scheduleCloud(rec, revReason); revReason = null;
   const r = await IDB.put('lists', rec); idbOk = !!r;
   updateIndicators(); if (view === 'home') renderHome();
   return r;
@@ -1158,7 +1183,7 @@ async function deleteChecklist(id){
   const msg = (m.subId ? 'הצ\'קליסט כבר נשלח לענן — המחיקה היא מהמכשיר בלבד.\n\n' : '') + `למחוק את הצ'קליסט "${m.location || 'צ\'קליסט חדש'}" מהמכשיר?`;
   if (!confirm(msg)) return;
   if (id === activeId) await maybeSnapshot(collect(), 'לפני מחיקה', true);
-  if (teamOn() && CLOUD.docs.some(d => d.id === id) && confirm('למחוק אותו גם מהענן של הצוות? (ביטול = רק מהמכשיר הזה)')) window.FBX.remove(settings.teamKey, id).catch(e => toast(teamErrText(e)));
+  if (teamOn() && CLOUD.docs.some(d => d.id === id) && confirm('להעביר אותו גם לסל המחזור של הצוות? (ניתן לשחזר משם בכל עת. ביטול = מחיקה רק מהמכשיר הזה)')) window.FBX.mark(settings.teamKey, id, { deleted:true, deletedAt:Date.now(), deletedBy:settings.deviceName || '' }).catch(e => toast(teamErrText(e)));
   await IDB.del('lists', id); index = index.filter(x => x.id !== id); LS.set(K.index, index);
   if (id === activeId){
     lockSwitch(); [K.form, K.sub, K.scans, K.timer].forEach(LS.del);
@@ -1186,7 +1211,8 @@ function homeList(){
   const local = index.filter(m => !(m.empty && m.id !== activeId)).map(m => ({ ...m, isLocal:true }));
   if (homeScope !== 'team' || !settings.teamKey) return local;
   const map = new Map();
-  CLOUD.docs.forEach(d => { if (d && d.id && d.meta) map.set(d.id, { ...d.meta, id:d.id, updatedAt:d.updatedAt, timer:d.timer || {}, device:d.device || '', isLocal:false }); });
+  if (homeFilter === 'trash') return CLOUD.docs.filter(d => d && d.deleted && d.meta).map(d => ({ ...d.meta, id:d.id, updatedAt:d.deletedAt || d.updatedAt, timer:{}, device:d.deletedBy || d.device || '', isLocal:false, trashed:true }));
+  CLOUD.docs.forEach(d => { if (d && d.id && d.meta && !d.deleted) map.set(d.id, { ...d.meta, id:d.id, updatedAt:d.updatedAt, timer:d.timer || {}, device:d.device || '', isLocal:false }); });
   local.forEach(m => {
     if (m.empty) return;
     const r = map.get(m.id);
@@ -1208,25 +1234,30 @@ function renderHome(){
   list.forEach(m => cnt[m.status] = (cnt[m.status] || 0) + 1);
   $('#hmDraft').textContent = cnt.draft; $('#hmMon').textContent = cnt.monitor; $('#hmDone').textContent = cnt.done;
   const exc = list.reduce((a, m) => a + (m.exc || 0), 0); $('#hmExc').textContent = exc; $('#hmExcBox').classList.toggle('alert-stat', exc > 0);
-  $('#statusFilters').innerHTML = [['all','הכל'],['draft','טיוטות'],['monitor','בניטור'],['done','הושלמו']].map(([k, t]) => `<button type="button" class="fchip ${homeFilter === k ? 'on' : ''}" data-hf="${k}">${t}<span class="n">${cnt[k]}</span></button>`).join('');
+  const nTrash = team ? CLOUD.docs.filter(d => d.deleted && d.meta).length : 0;
+  if (homeFilter === 'trash' && !team) homeFilter = 'all';
+  $('#statusFilters').innerHTML = (nTrash ? `<button type="button" class="fchip ${homeFilter === 'trash' ? 'on' : ''}" data-hf="trash">🗑 סל מחזור<span class="n">${nTrash}</span></button>` : '') + [['all','הכל'],['draft','טיוטות'],['monitor','בניטור'],['done','הושלמו']].map(([k, t]) => `<button type="button" class="fchip ${homeFilter === k ? 'on' : ''}" data-hf="${k}">${t}<span class="n">${cnt[k]}</span></button>`).join('');
   $('#siteFilters').innerHTML = [['all','כל האתרים'], ...Object.keys(SITES).map(s => [s, s])].map(([k, t]) => `<button type="button" class="fchip ${homeSite === k ? 'on' : ''}" data-hs="${esc(k)}">${esc(t)}</button>`).join('');
   const tOf = m => m.id === activeId && m.isLocal ? timer : m.timer;
   const rank = m => { const ti = timerInfo(tOf(m)); return ti && ti.due ? 0 : m.status === 'monitor' ? 1 : m.status === 'draft' ? 2 : 3; };
-  const shown = list.filter(m => (homeFilter === 'all' || m.status === homeFilter) && (homeSite === 'all' || m.site === homeSite))
+  const shown = list.filter(m => (homeFilter === 'all' || homeFilter === 'trash' || m.status === homeFilter) && (homeSite === 'all' || m.site === homeSite))
     .sort((a, b) => rank(a) - rank(b) || (b.updatedAt || 0) - (a.updatedAt || 0));
   if (!shown.length){
     $('#cards').innerHTML = `<div class="panel home-empty"><b>${list.length ? 'אין צ\'קליסטים בסינון הזה' : team ? 'עדיין אין צ\'קליסטים בצוות' : 'עדיין אין צ\'קליסטים'}</b><span class="hint">צ'קליסט חדש נפתח בכפתור למטה.</span></div>`;
     return;
   }
   $('#cards').innerHTML = shown.map(m => {
-    const cur = m.id === activeId && m.isLocal, ti = timerInfo(tOf(m)), [sc, stx] = STATUS_UI[m.status] || STATUS_UI.draft;
+    const cur = m.id === activeId && m.isLocal, ti = timerInfo(tOf(m)), [sc, stx] = m.trashed ? trashUI : (STATUS_UI[m.status] || STATUS_UI.draft);
     const title = [m.quadrant && 'רביע ' + m.quadrant, m.hall && 'מודול ' + m.hall].filter(Boolean).join(' · ') || 'צ\'קליסט חדש';
     const types = (m.types || []).map(t => t.replace(/ \(.*\)/, '')).join(', ');
-    const sync = m.sync === 'queued' || m.sync === 'pending' ? '<span class="pill warn">ממתין ל-Sheets</span>' : m.sync ? '<span class="pill ok">נשלח</span>' : '';
+    const bk = !m.isLocal || !settings.teamKey || m.empty ? '' : backedUp(m) ? '<span class="pill ok">☁ מגובה בענן</span>' : '<span class="pill warn">☁ ממתין לגיבוי</span>';
+    const sync = !settings.webhook ? '' : m.sync === 'queued' || m.sync === 'pending' ? '<span class="pill warn">ממתין ל-Sheets</span>' : m.sync ? '<span class="pill ok">נשלח</span>' : '';
     const openAttr = team ? `data-open-team="${esc(m.id)}"` : `data-open="${esc(m.id)}"`;
     const devPill = team ? (m.localOnly ? '<span class="pill warn">טרם סונכרן</span>' : m.device ? `<span class="pill dev">📱 ${esc(m.device)}</span>` : '') + (m.remoteNewer ? '<span class="pill blue">עדכון בענן</span>' : '') : '';
     const pct = m.pct || 0;
-    const actions = m.isLocal
+    const actions = m.trashed
+      ? `<button type="button" class="btn btn-primary" data-undel="${esc(m.id)}">שחזור מסל המחזור</button>`
+      : m.isLocal
       ? `<button type="button" class="btn btn-primary" ${openAttr}>${m.status === 'done' ? 'צפייה' : 'המשך'}</button>
          <button type="button" class="btn" data-lc="print" data-id="${esc(m.id)}">PDF</button>
          <button type="button" class="btn" data-lc="dup" data-id="${esc(m.id)}" title="צ'קליסט חדש עם אותו אתר וצוות">שכפול צוות</button>
@@ -1239,7 +1270,7 @@ function renderHome(){
         <span class="lc-txt"><small>${esc(m.site || 'אתר לא נבחר')}</small><h3>${esc(title)}</h3><span class="sub">${esc(m.dt ? fmtDT(m.dt) : 'ללא תאריך')}${types ? ' · ' + esc(types) : ''}</span></span>
         <span class="mini ${pct === 100 ? 'full' : ''}"><svg viewBox="0 0 62 62"><circle class="bg" cx="31" cy="31" r="25"/><circle class="fg" cx="31" cy="31" r="25" pathLength="100" stroke-dasharray="${pct} 100"/></svg><b>${pct === 100 ? '✓' : pct + '%'}</b></span>
       </button>
-      <div class="lc-badges">${cur ? '<span class="pill cur">פתוח עכשיו</span>' : ''}<span class="pill ${sc}">${stx}</span>${devPill}${sync}${ti ? `<span class="pill ${ti.cls === 'bad' ? 'bad' : 'warn'}" data-tid="${esc(m.id)}" data-tremote="${m.isLocal ? '' : '1'}">${ti.text}</span>` : ''}${m.scans ? `<span class="pill">${m.scans} סריקות${m.exc ? ` · <b style="color:var(--danger)">${m.exc} חריגות</b>` : ''}${m.maxT != null ? ` · מקס' ${m.maxT}°` : ''}</span>` : ''}${m.workers ? `<span class="pill">${m.workers} עובדים</span>` : ''}</div>
+      <div class="lc-badges">${cur ? '<span class="pill cur">פתוח עכשיו</span>' : ''}<span class="pill ${sc}">${stx}</span>${devPill}${bk}${sync}${ti ? `<span class="pill ${ti.cls === 'bad' ? 'bad' : 'warn'}" data-tid="${esc(m.id)}" data-tremote="${m.isLocal ? '' : '1'}">${ti.text}</span>` : ''}${m.scans ? `<span class="pill">${m.scans} סריקות${m.exc ? ` · <b style="color:var(--danger)">${m.exc} חריגות</b>` : ''}${m.maxT != null ? ` · מקס' ${m.maxT}°` : ''}</span>` : ''}${m.workers ? `<span class="pill">${m.workers} עובדים</span>` : ''}</div>
       <div class="lc-actions">${actions}</div>
     </article>`;
   }).join('');
@@ -1263,7 +1294,9 @@ function checkBackgroundTimers(){
 }
 
 /* ================= סנכרון צוות (Firebase) ================= */
-const CLOUD = { ready:false, err:null, unsub:null, docs:[], pending:false, fromCache:true, timers:{}, pushed:{}, pushedAll:false, started:false };
+const K_ACK = 'cxe_acked_v1';
+const K_REV = 'cxe_revmark_v1';
+const CLOUD = { reasons:{}, revMark: LS.get(K_REV, {}), acked: LS.get(K_ACK, {}), ready:false, err:null, unsub:null, docs:[], pending:false, fromCache:true, timers:{}, pushed:{}, pushedAll:false, started:false };
 const clean = x => JSON.parse(JSON.stringify(x === undefined ? null : x));
 function teamOn(){ return !!(window.FBX && (settings.teamKey || '').length >= 16); }
 function teamErrText(e){
@@ -1285,6 +1318,7 @@ async function cloudStart(){
   CLOUD.unsub = window.FBX.listen(team, (docs, meta) => {
     if (team !== settings.teamKey) return;
     CLOUD.docs = docs; CLOUD.pending = meta.hasPendingWrites; CLOUD.fromCache = meta.fromCache; CLOUD.err = null;
+    if (!meta.fromCache){ let ch = false; docs.forEach(d => { if (!d.__pend && (d.updatedAt || 0) > (CLOUD.acked[d.id] || 0)){ CLOUD.acked[d.id] = d.updatedAt; ch = true; } }); if (ch) LS.set(K_ACK, CLOUD.acked); }
     checkConflict();
     if (view === 'home') renderHome(); updateIndicators();
   }, e => { CLOUD.err = teamErrText(e); updateIndicators(); });
@@ -1298,24 +1332,37 @@ async function pushAllLocal(){
     if (rec){ rec.updatedAt = rec.updatedAt || m.updatedAt; cloudPush(rec); await new Promise(r => setTimeout(r, 150)); }
   }
 }
-function scheduleCloud(rec){
+let revReason = null;
+function markRev(r){ revReason = r; }
+function scheduleCloud(rec, reason){
   if (!teamOn() || !rec || !rec.id) return;
   clearTimeout(CLOUD.timers[rec.id]);
   const copy = clean(rec);
-  CLOUD.timers[rec.id] = setTimeout(() => cloudPush(copy), 1500);
+  if (reason) CLOUD.reasons[rec.id] = reason;
+  CLOUD.timers[rec.id] = setTimeout(() => { const r = CLOUD.reasons[rec.id]; delete CLOUD.reasons[rec.id]; cloudPush(copy, r); }, 1500);
 }
-function cloudPush(rec){
+function cloudPush(rec, reason){
   if (!teamOn()) return;
   const f = rec.form || {};
   if (!hasContent(f) && !rec.submission) return;
   const team = settings.teamKey, id = rec.id;
   const remote = CLOUD.docs.find(d => d.id === id);
   if (remote && (remote.updatedAt || 0) > (rec.updatedAt || 0)) return; // בענן יש גרסה חדשה יותר — לא דורסים
+  if (remote && remote.deleted && (rec.updatedAt || 0) <= (remote.deletedAt || 0)) return; // נמחק בענן — לא מחזירים בטעות
   const sigs = [{ key:'mgr', data:f.mgrSig }].concat((f.workers || []).map(w => ({ key:'w_' + w.id, data:w.sig })));
   const formNoSig = { ...f, workers:(f.workers || []).map(w => ({ ...w, sig: w.sig ? 'cloud' : null })), mgrSig: f.mgrSig ? 'cloud' : null };
   const meta = metaOf(rec); delete meta.empty;
   const doc = clean({ id, updatedAt: rec.updatedAt || Date.now(), device: settings.deviceName || '', meta, form: formNoSig, submission: rec.submission || null, scans: rec.scans || [], timer: rec.timer || {} });
-  window.FBX.save(team, id, doc).catch(e => { CLOUD.err = teamErrText(e); updateIndicators(); });
+  // היסטוריית גרסאות בענן (לא ניתנת למחיקה) — באירועים משמעותיים ולפחות כל 5 דקות של עריכה
+  const rm = CLOUD.revMark[team + '/' + id] || {}, now = Date.now();
+  if (window.FBX.saveRev && (reason || ((doc.updatedAt || 0) > (rm.upd || 0) && now - (rm.at || 0) > 5 * 60000))){
+    CLOUD.revMark[team + '/' + id] = { at: now, upd: doc.updatedAt }; LS.set(K_REV, CLOUD.revMark);
+    window.FBX.saveRev(team, id, clean({ at: now, device: settings.deviceName || '', reason: reason || 'עריכה', updatedAt: doc.updatedAt, doc: { meta: doc.meta, form: doc.form, submission: doc.submission, scans: doc.scans, timer: doc.timer } })).catch(() => {});
+  }
+  window.FBX.save(team, id, doc).then(() => {
+    CLOUD.acked[id] = Math.max(CLOUD.acked[id] || 0, doc.updatedAt); LS.set(K_ACK, CLOUD.acked);
+    CLOUD.err = null; updateIndicators(); if (view === 'home') renderHome();
+  }).catch(e => { CLOUD.err = teamErrText(e); updateIndicators(); });
   sigs.forEach(s => {
     if (!s.data) return;
     const fp = s.data.length + ':' + s.data.slice(-40), k = team + '/' + id + '/' + s.key;
@@ -1353,6 +1400,112 @@ function checkConflict(){
   const newer = r && (r.updatedAt || 0) > (editAt || 0) && (r.device || '') !== (settings.deviceName || '');
   bar.hidden = !newer;
   if (newer) $('#conflictTxt').textContent = `הצ'קליסט הזה עודכן במכשיר אחר${r.device ? ' (' + r.device + ')' : ''} ב-${fmtTime(r.updatedAt)}.`;
+}
+function isConnected(){ return navigator.onLine && !!settings.teamKey && !!window.FBX && !window.FBX_ERROR && CLOUD.ready && !CLOUD.err; }
+function backedUp(m){ return !!m && (CLOUD.acked[m.id] || 0) >= (m.updatedAt || 0); }
+function unbackedCount(){ return index.filter(m => !m.empty && !backedUp(m)).length; }
+const withTimeout = (p, ms, label) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(Object.assign(new Error(label || 'timeout'), { code:'timeout' })), ms))]);
+async function runDiagnostics(){
+  const ul = $('#diagList'); ul.hidden = false;
+  const steps = [];
+  const draw = () => { ul.innerHTML = steps.map(s => `<li><span class="${s.st === 'ok' ? 'diag-ok' : s.st === 'bad' ? 'diag-bad' : 'diag-wait'}">${s.st === 'ok' ? '✓' : s.st === 'bad' ? '✗' : '…'}</span><span class="grow"><b>${esc(s.t)}</b>${s.fix ? `<small style="white-space:normal">${esc(s.fix)}</small>` : ''}</span></li>`).join(''); };
+  const step = t => { const s = { t, st:'wait' }; steps.push(s); draw(); return s; };
+  const fail = (s, fix) => { s.st = 'bad'; s.fix = fix; draw(); };
+  let s = step('חיבור לאינטרנט');
+  if (!navigator.onLine) return fail(s, 'אין קליטה. הצ\'קליסטים שמורים במכשיר ויגובו אוטומטית כשתחזור קליטה.');
+  s.st = 'ok'; draw();
+  s = step('טעינת Firebase');
+  if (!window.FBX){ await new Promise(r => setTimeout(r, 2500)); }
+  if (!window.FBX) return fail(s, 'ספריית Firebase לא נטענה. רענן את הדף. אם פתחת מתוך וואטסאפ — פתח ב-Chrome.');
+  s.st = 'ok'; draw();
+  s = step('קוד צוות');
+  if ((settings.teamKey || '').length < 16) return fail(s, 'אין קוד צוות. לחץ "יצירת קוד חדש" ואז "חיבור הצוות".');
+  s.st = 'ok'; draw();
+  s = step('התחברות לשרת (Anonymous)');
+  try { await withTimeout(window.FBX.ready, 12000, 'auth timeout'); s.st = 'ok'; draw(); }
+  catch(e){
+    const c = String(e.code || e.message);
+    return fail(s, c.includes('operation-not-allowed') || c.includes('admin-restricted') ? 'ב-Firebase Console: Authentication ← Sign-in method ← Anonymous ← Enable ← Save.'
+      : c.includes('unauthorized-domain') || c.includes('referer') ? `ב-Firebase Console: Authentication ← Settings ← Authorized domains ← Add domain ← ${location.hostname}`
+      : c.includes('timeout') ? 'השרת לא ענה. בדוק קליטה ונסה שוב.' : 'שגיאת התחברות: ' + c);
+  }
+  s = step('כתיבה וקריאה במסד הנתונים');
+  try {
+    const ok = await withTimeout(window.FBX.health(settings.teamKey), 15000, 'db timeout');
+    if (!ok) return fail(s, 'הכתיבה לא אומתה מול השרת. נסה שוב.');
+    s.st = 'ok'; draw();
+  } catch(e){
+    const c = String(e.code || e.message);
+    return fail(s, c.includes('permission') ? 'חוקי האבטחה לא פורסמו: Firebase Console ← Firestore Database ← Rules ← הדבק את firestore.rules ← Publish.'
+      : c.includes('not-found') || c.includes('does not exist') || c.includes('NOT_FOUND') ? 'לא נוצר מסד נתונים: Firebase Console ← Firestore Database ← Create database (Production, אזור eur3).'
+      : c.includes('timeout') || c.includes('unavailable') ? 'השרת לא ענה תוך 15 שניות. אם יש קליטה — כנראה שלא נוצר מסד נתונים: Firestore Database ← Create database.'
+      : 'שגיאה: ' + c);
+  }
+  s = step('גיבוי הצ\'קליסטים במכשיר לענן');
+  CLOUD.err = null; if (!CLOUD.unsub) await cloudStart(); else { CLOUD.pushedAll = false; await pushAllLocal(); }
+  await new Promise(r => setTimeout(r, 2500));
+  const left = unbackedCount();
+  if (left){ s.st = 'wait'; s.fix = `${left} צ'קליסטים עדיין בהעלאה — הם יסומנו "מגובה בענן" כשהשרת יאשר.`; }
+  else { s.st = 'ok'; s.fix = 'כל הצ\'קליסטים במכשיר מגובים בענן.'; }
+  draw(); updateIndicators();
+}
+async function restoreAllFromCloud(){
+  if (!teamOn() || !CLOUD.ready) return toast('הענן לא מחובר — הרץ קודם "בדיקת חיבור לענן"');
+  const todo = CLOUD.docs.filter(d => d.meta && !d.deleted && d.id !== activeId && (() => { const l = index.find(m => m.id === d.id); return !l || (d.updatedAt || 0) > (l.updatedAt || 0); })());
+  if (!todo.length) return toast('כל הצ\'קליסטים מהענן כבר נמצאים במכשיר');
+  if (!confirm(`להוריד ${todo.length} צ'קליסטים מהענן למכשיר הזה?`)) return;
+  let n = 0;
+  for (const d of todo){
+    try { const rec = await pullRecord(d.id); if (rec){ await IDB.put('lists', rec); upsertMeta(metaOf(rec)); CLOUD.acked[d.id] = rec.updatedAt; n++; toast(`משחזר… ${n}/${todo.length}`, 1500); } } catch(e){}
+  }
+  LS.set(K_ACK, CLOUD.acked);
+  toast(`שוחזרו ${n} צ'קליסטים מהענן`); if (view === 'home') renderHome();
+}
+let revCache = [];
+async function loadRevs(){
+  const ul = $('#revList'); ul.hidden = false;
+  if (!teamOn() || !CLOUD.ready) { ul.innerHTML = '<li><span class="empty" style="flex:1">הענן לא מחובר</span></li>'; return; }
+  ul.innerHTML = '<li><span class="empty" style="flex:1">טוען…</span></li>';
+  try { revCache = await withTimeout(window.FBX.listRevs(settings.teamKey, activeId), 15000); }
+  catch(e){ ul.innerHTML = `<li><span class="empty" style="flex:1">${esc(teamErrText(e))}</span></li>`; return; }
+  if (!revCache.length){ ul.innerHTML = '<li><span class="empty" style="flex:1">עדיין אין גרסאות שמורות בענן לצ\'קליסט הזה</span></li>'; return; }
+  ul.innerHTML = revCache.map(r => `<li><span class="grow"><b>${fmtDT(r.at)}</b> · ${esc(r.reason || '')}<small>${esc(r.device || '')}${r.doc && r.doc.meta ? ' · מוכנות ' + r.doc.meta.pct + '%' : ''}</small></span><button type="button" class="btn btn-sm" data-rev="${esc(r.rid)}">שחזור</button></li>`).join('');
+}
+async function restoreRev(rid){
+  const r = revCache.find(x => x.rid === rid); if (!r || !r.doc) return;
+  if (!confirm(`לשחזר את הצ'קליסט לגרסה מ-${fmtDT(r.at)}? המצב הנוכחי יישמר כנקודת שחזור וכגרסה בענן.`)) return;
+  await maybeSnapshot(collect(), 'לפני שחזור גרסה', true);
+  let sigs = {}; try { const c = await window.FBX.load(settings.teamKey, activeId); sigs = (c && c.sigs) || {}; } catch(e){}
+  const cur = activeRecord(), form = { ...(r.doc.form || {}) };
+  form.workers = (form.workers || []).map(w => ({ ...w, sig: w.sig ? (sigs['w_' + w.id] || (cur.form.workers.find(x => x.id === w.id) || {}).sig || null) : null }));
+  form.mgrSig = form.mgrSig ? (sigs.mgr || cur.form.mgrSig || null) : null;
+  const rec = { id:activeId, createdAt:cur.createdAt, updatedAt:Date.now(), form, submission:r.doc.submission || null, scans:r.doc.scans || [], timer:{} };
+  cloudPush(rec, 'שחזור גרסה מ-' + fmtDT(r.at));
+  await IDB.put('lists', rec); upsertMeta(metaOf(rec));
+  await new Promise(res => setTimeout(res, 900));
+  lockSwitch(); writeState(rec); goTo('form');
+}
+const K_PEOPLE = 'cxe_people_v1';
+let people = LS.get(K_PEOPLE, { roles:{}, workers:{} });
+function learnPeople(f){
+  let ch = false;
+  (f.team || []).forEach(t => { if (t && t.name && validPhone(t.phone) && people.roles[t.name] !== t.phone){ people.roles[t.name] = t.phone; ch = true; } });
+  (f.workers || []).forEach(w => { if (w && w.name && w.idc && people.workers[w.name] !== w.idc){ people.workers[w.name] = w.idc; ch = true; } });
+  if (ch){ LS.set(K_PEOPLE, people); fillDatalists(); }
+}
+function fillDatalists(){
+  $('#dlPeople').innerHTML = Object.keys(people.roles).sort().map(n => `<option value="${esc(n)}">`).join('');
+  $('#dlWorkers').innerHTML = Object.keys(people.workers).sort().map(n => `<option value="${esc(n)}">`).join('');
+}
+function autofillFrom(el){
+  if (el.dataset.roleName){
+    const ph = $(`#${el.dataset.roleName}_phone`), known = people.roles[el.value.trim()];
+    if (known && !ph.value){ ph.value = known; return true; }
+  } else if (el.dataset.f === 'name'){
+    const w = el.closest('.worker'), idc = w && $('[data-f=idc]', w), known = people.workers[el.value.trim()];
+    if (known && idc && !idc.value){ idc.value = known; return true; }
+  }
+  return false;
 }
 function makeTeamKey(){ const a = new Uint8Array(15); (crypto.getRandomValues ? crypto.getRandomValues(a) : a.forEach((_, i) => a[i] = Math.random() * 256)); return 'CX-' + Array.from(a, b => 'abcdefghjkmnpqrstuvwxyz23456789'[b % 31]).join('').replace(/(.{5})(?=.)/g, '$1-'); }
 function joinLink(){ return location.origin + location.pathname + '#join=' + encodeURIComponent(settings.teamKey); }
@@ -1441,23 +1594,22 @@ function updateIndicators(){
   const online = navigator.onLine;
   setSt('stNet', online ? 'ok' : 'bad', online ? 'יש קליטה' : 'אין קליטה');
   const hasUrl = !!(settings.webhook || '').trim();
-  if (!hasUrl) setSt('stSync', 'warn', 'ענן לא מוגדר');
-  else if (queue.length) setSt('stSync', 'warn', `${queue.length} ממתינים לענן`);
-  else if (lastSync) setSt('stSync', 'ok', `ענן ✓ ${fmtTime(lastSync)}`);
-  else setSt('stSync', '', 'טרם נשלח לענן');
-  if (!settings.teamKey) setSt('stTeam', '', 'צוות לא מחובר');
-  else if (window.FBX_ERROR) setSt('stTeam', 'warn', 'צוות: Firebase לא נטען');
-  else if (CLOUD.err) setSt('stTeam', 'bad', 'צוות: ' + CLOUD.err);
-  else if (!CLOUD.ready) setSt('stTeam', 'warn', 'צוות: מתחבר…');
-  else if (CLOUD.pending) setSt('stTeam', 'warn', 'צוות: ממתין לסנכרון');
-  else setSt('stTeam', 'ok', `צוות ✓ ${CLOUD.docs.length}`);
+  $('#stSync').hidden = !hasUrl;
+  if (!hasUrl) setSt('stSync', '', 'Sheets לא מוגדר');
+  else if (queue.length) setSt('stSync', 'warn', `Sheets: ${queue.length} ממתינים`);
+  else if (lastSync) setSt('stSync', 'ok', `Sheets ✓ ${fmtTime(lastSync)}`);
+  else setSt('stSync', '', 'Sheets: טרם נשלח');
+  const unb = unbackedCount();
+  setSt('stTeam', isConnected() ? 'ok' : 'bad', isConnected() ? 'מחובר' : 'לא מחובר');
+  const ca = $('#cloudAlert');
+  if (ca){ const bad = !settings.teamKey || window.FBX_ERROR || CLOUD.err; ca.hidden = !bad; if (bad) $('#cloudAlertTxt').textContent = CLOUD.err || (window.FBX_ERROR ? 'ספריית Firebase לא נטענה' : 'לא הוגדר קוד צוות'); }
   setSt('stSave', saveOk ? 'ok' : 'bad', lastSavedAt ? (saveOk ? `נשמר ${fmtTime(lastSavedAt)}` : 'שמירה נכשלה') : 'שמור במכשיר');
   // לוח בריאות גיבוי
   if ($('#hSave')){
     setHealth('hSave', saveOk ? 'ok' : 'bad', lastSavedAt ? fmtTime(lastSavedAt) : '');
     setHealth('hIdb', idbOk === null ? '' : idbOk ? 'ok' : 'bad', idbOk === null ? '' : idbOk ? 'פעיל' : 'לא זמין');
     setHealth('hPersist', persisted ? 'ok' : 'warn', persisted ? 'מוגן' : 'לא מוגן');
-    setHealth('hTeam', !settings.teamKey ? '' : CLOUD.err || window.FBX_ERROR ? 'bad' : CLOUD.pending || !CLOUD.ready ? 'warn' : 'ok', !settings.teamKey ? 'כבוי' : CLOUD.err ? 'שגיאה' : !CLOUD.ready ? 'מתחבר' : CLOUD.pending ? 'ממתין' : 'מסונכרן');
+    setHealth('hTeam', !settings.teamKey ? 'bad' : CLOUD.err || window.FBX_ERROR ? 'bad' : unb || !CLOUD.ready ? 'warn' : 'ok', !settings.teamKey ? 'כבוי' : CLOUD.err ? 'שגיאה' : !CLOUD.ready ? 'מתחבר' : unb ? `${unb} ממתינים` : 'הכול מגובה');
     const tc = $('#teamCount'); if (tc){ tc.textContent = !settings.teamKey ? 'כבוי' : CLOUD.err ? 'שגיאה' : CLOUD.ready ? `${CLOUD.docs.length} בצוות` : 'מתחבר…'; tc.classList.toggle('full', !!(settings.teamKey && CLOUD.ready && !CLOUD.err)); }
     const tm = $('#teamMsg'); if (tm) tm.textContent = CLOUD.err ? CLOUD.err : window.FBX_ERROR && settings.teamKey ? 'ספריית Firebase לא נטענה (אין קליטה בטעינה הראשונה?). תנסה שוב אוטומטית בפתיחה הבאה.' : '';
     setHealth('hCloud', !hasUrl ? 'warn' : queue.length ? 'warn' : lastSync ? 'ok' : '', !hasUrl ? 'לא מוגדר' : queue.length ? `${queue.length} ממתינים` : lastSync ? fmtTime(lastSync) : '—');
@@ -1557,8 +1709,10 @@ async function submitForm(){
   if (!confirm('לשלוח את הטופס? לאחר השליחה לא ניתן לשנות את הפרטים.')) return;
   const id = makeId();
   const payload = buildPayload(s, id);
+  try { if (crypto.subtle){ const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(payload))); payload.integrity = Array.from(new Uint8Array(buf), b => b.toString(16).padStart(2, '0')).join(''); } } catch(e){}
+  markRev('שליחת הטופס');
   markEdit();
-  submission = { id, at:new Date().toISOString(), status:'pending', scanner:s.team[SCAN_I].name, location:locStr(s), load:isLoad(s) };
+  submission = { id, hash: payload.integrity || '', at:new Date().toISOString(), status:'pending', scanner:s.team[SCAN_I].name, location:locStr(s), load:isLoad(s) };
   LS.set(K.sub, submission); saveNow();
   await maybeSnapshot(s, 'בזמן השליחה', true);
   $('#sendBtn').disabled = true; $('#sendBtn').textContent = 'שולח…';
@@ -1615,6 +1769,45 @@ async function requestPersist(ask){
   updateIndicators();
 }
 
+/* ================= שיתוף בוואטסאפ ================= */
+function shareText(){
+  const { s, errors } = validate(), team = s.team, b = t => `*${t}*`;
+  const st = statusOf(submission, s), stTxt = { draft:'טיוטה', monitor:'נשלח — בניטור תרמי', done:'הושלם' }[st];
+  const lines = [];
+  lines.push(b('CX-Electra | צ\'קליסט בטיחות לבדיקה בעומס'));
+  lines.push(`📍 ${locStr(s) || 'מיקום לא הוזן'}`);
+  if (s.dt) lines.push(`🗓 ${fmtDT(s.dt)}`);
+  if (s.equipment) lines.push(`⚙️ ציוד: ${s.equipment}`);
+  if (s.types.length) lines.push(`🧪 סוג: ${s.types.map(t => t === 'אחר' ? 'אחר: ' + s.other : t).join(', ')}`);
+  lines.push(`📋 סטטוס: ${stTxt}${errors.length ? ` (חסרים ${errors.length} פריטים)` : ''}`);
+  lines.push('', b('צוות ותפקידי חירום'));
+  ROLES.forEach((r, i) => { if (r.loadOnly && !isLoad(s)) return; const t = team[i]; if (t.name || t.phone) lines.push(`• ${r.emergency ? r.num + '. ' : ''}${r.title}: ${t.name || '—'}${t.phone ? ' ' + t.phone : ''}`); });
+  const nV = s.checks.filter(Boolean).length, notes = CHECKS.map((c, i) => !s.checks[i] && s.checkNotes[i] ? `   ⚠️ סעיף ${i+1}: ${s.checkNotes[i]}` : '').filter(Boolean);
+  lines.push('', `🛡 צ'קליסט קדם-בדיקה: ${nV}/${CHECKS.length} סומנו V`);
+  notes.forEach(n => lines.push(n));
+  const signed = s.workers.filter(w => w.sig);
+  lines.push(`✍️ חתמו: ${signed.length} עובדים${s.mgrSig ? ' + מנהל הבדיקה' : ''}`);
+  if (signed.length) lines.push('   ' + signed.map(w => w.name).filter(Boolean).join(', '));
+  const real = scans.filter(x => x.status !== 'סיום בדיקה');
+  if (real.length){
+    const temps = real.map(x => parseFloat(x.temperature)).filter(v => !isNaN(v)), exc = real.filter(x => x.status === 'חריג').length;
+    lines.push(`🌡 סריקות תרמיות: ${real.length}${exc ? ` · ${exc} חריגות` : ' · ללא חריגות'}${temps.length ? ` · מקס' ${Math.max(...temps)}°C` : ''}`);
+    if (submission && submission.closedAt) lines.push(`🏁 הבדיקה הסתיימה ב-${fmtTime(submission.closedAt)}`);
+  }
+  lines.push('', b('דגשי חירום'));
+  lines.push('• סריקה תרמית כל 15 דק\', עצירה בכל חריגה');
+  lines.push('• רעש חריג ומסוכן / ריח שרוף / עשן ← ניתוק AC + מצברים, פינוי וספירת נוכחים');
+  lines.push('• אין כיבוי במים לפני אישור זיכוי מתחים');
+  if (submission) lines.push('', `מזהה: ${submission.id}${submission.hash ? ' · חותמת: ' + submission.hash.slice(0, 12) : ''}`);
+  return lines.join('\n');
+}
+function shareWhatsApp(){
+  const text = shareText();
+  const url = 'https://wa.me/?text=' + encodeURIComponent(text);
+  const w = window.open(url, '_blank');
+  if (!w) location.href = url;
+}
+
 /* ================= הדפסה / PDF ================= */
 function buildPrint(s, sub, sc){
   const errors = s === undefined ? validate().errors : [];
@@ -1639,6 +1832,7 @@ function buildPrint(s, sub, sc){
     <table><tr><th>#</th><th>שם מלא</th><th>ת.ז / חברה</th><th>חתימה</th></tr>${(s.workers || []).map((w, i) => `<tr><td>${i+1}</td><td>${esc(w.name)}</td><td>${esc(w.idc)}</td><td>${sigImg(w.sig)}</td></tr>`).join('')}</table>
     <h2>אישור מנהל הבדיקה (CX-Electra)</h2>
     <table class="avoid">${row('שם', team[MGR_I].name)}<tr><th>חתימה</th><td>${sigImg(s.mgrSig)}</td></tr></table>
+    ${sub && sub.hash ? `<p style="font-size:8.5pt;color:#555;margin-top:10px;direction:ltr;text-align:right">חותמת שלמות דיגיטלית (SHA-256) של הטופס בשעת השליחה: ${esc(sub.hash)}</p>` : ''}
     ${sc.length ? `<h2>סריקות תרמיות</h2><table><tr><th>שעה</th><th>סטטוס</th><th>שלב</th><th>טמפ' (°C)</th><th>הערה</th><th>בודק</th></tr>${[...sc].reverse().map(x => `<tr><td>${esc(fmtDT(x.time))}</td><td>${esc(x.status)}</td><td>${esc(x.phase)}</td><td>${esc(x.temperature)}</td><td>${esc(x.note)}</td><td>${esc(x.scanner)}</td></tr>`).join('')}</table>` : ''}`;
 }
 function printDoc(data){
@@ -1723,7 +1917,7 @@ function openScan(mode){
 }
 function closeScan(){ $('#scanOverlay').hidden = true; stopAlarm(); }
 function logScan(status, opts){
-  opts = opts || {}; markEdit();
+  opts = opts || {}; markEdit(); markRev(opts.final ? 'סיום בדיקה' : 'סריקה תרמית: ' + status);
   const s = collect();
   const temp = opts.final ? '' : $('#scanTemp').value;
   const limit = parseFloat(settings.tempLimit);
@@ -1754,7 +1948,7 @@ function finishTest(){
   if (!confirm('לסיים את הבדיקה? הטיימר ייעצר ותירשם שעת סיום.')) return;
   timerReset();
   logScan('סיום בדיקה', { final:true, note:'הבדיקה הסתיימה' });
-  submission.closedAt = new Date().toISOString(); markEdit(); LS.set(K.sub, submission);
+  submission.closedAt = new Date().toISOString(); markEdit(); markRev('סיום בדיקה'); LS.set(K.sub, submission);
   archiveCurrent(); toast('הבדיקה הסתיימה ונשמרה'); tick(); renderScans();
 }
 function renderChart(){
@@ -1822,6 +2016,8 @@ function bind(){
     const op = e.target.closest('[data-open]'); if (op){ $('#bgAlarm').hidden = true; stopAlarm(); openChecklist(op.dataset.open, op.dataset.step ? +op.dataset.step : null); return; }
     const hf = e.target.closest('[data-hf]'); if (hf){ homeFilter = hf.dataset.hf; renderHome(); return; }
     const hs = e.target.closest('[data-hs]'); if (hs){ homeSite = hs.dataset.hs; renderHome(); return; }
+    const rv = e.target.closest('[data-rev]'); if (rv){ restoreRev(rv.dataset.rev); return; }
+    const ud = e.target.closest('[data-undel]'); if (ud){ window.FBX.mark(settings.teamKey, ud.dataset.undel, { deleted:false, deletedAt:null }).then(() => toast('שוחזר מסל המחזור')).catch(err => toast(teamErrText(err))); homeFilter = 'all'; return; }
     const ot = e.target.closest('[data-open-team]'); if (ot){ openFromTeam(ot.dataset.openTeam); return; }
     const scp = e.target.closest('[data-scope]'); if (scp){ homeScope = scp.dataset.scope; renderHome(); return; }
     const lc = e.target.closest('[data-lc]');
@@ -1838,6 +2034,7 @@ function bind(){
     if (e.target.id === 'flushBtn') flushQueue(true);
     const sc = e.target.closest('[data-scan]'); if (sc) logScan(sc.dataset.scan);
   });
+  $('main').addEventListener('change', e => { if (e.target.matches('[data-role-name],[data-f=name]') && autofillFrom(e.target)) onChange(); });
   $('main').addEventListener('input', e => { if (!e.target.closest('details')) onChange(); });
   $('main').addEventListener('change', e => { if (e.target.closest('details')) return; if (e.target.type === 'checkbox' || e.target.type === 'radio') haptic(8); onChange(); });
   $('#prevBtn').onclick = () => showStep(currentStep - 1);
@@ -1846,6 +2043,7 @@ function bind(){
   $('#mgrClear').onclick = () => mgrPad.clear();
   $('#sendBtn').onclick = submitForm;
   $('#printBtn').onclick = () => printDoc();
+  $('#waBtn').onclick = shareWhatsApp;
   window.addEventListener('beforeprint', () => { if (!$('#printArea').innerHTML) buildPrint(); });
   window.addEventListener('afterprint', () => { $('#printArea').innerHTML = ''; });
   $('#newFormBtn').onclick = () => newChecklist();
@@ -1866,12 +2064,12 @@ function bind(){
     const key = $('#setTeam').value.trim(), dev = $('#setDevice').value.trim();
     if (key && key.length < 16) return toast('קוד צוות צריך לפחות 16 תווים');
     const changed = key !== settings.teamKey;
-    Object.assign(settings, { teamKey:key, deviceName:dev }); LS.set(K.settings, settings);
+    Object.assign(settings, { teamKey:key, deviceName:dev, autoTeam:false }); LS.set(K.settings, settings);
     toast(key ? 'הצוות מחובר — מסנכרן' : 'סנכרון הצוות כובה');
     if (changed) cloudStart(); else { CLOUD.pushedAll = false; pushAllLocal(); }
     updateIndicators(); if (view === 'home') renderHome();
   };
-  $('#genTeamBtn').onclick = () => { if (settings.teamKey && !confirm('יצירת קוד חדש תנתק מהצוות הנוכחי. להמשיך?')) return; $('#setTeam').value = makeTeamKey(); toast('נוצר קוד — לחץ "חיבור הצוות" ושתף אותו עם הצוות'); };
+  $('#genTeamBtn').onclick = () => { if (settings.teamKey && !settings.autoTeam && !confirm('יצירת קוד חדש תנתק מהצוות הנוכחי. להמשיך?')) return; $('#setTeam').value = makeTeamKey(); toast('נוצר קוד — לחץ "חיבור הצוות" ושתף אותו עם הצוות'); };
   $('#shareTeamBtn').onclick = async () => {
     if (!settings.teamKey) return toast('קודם חבר קוד צוות');
     const url = joinLink(), text = `הצטרפות לצוות CX-Electra — צ'קליסט בטיחות לבדיקות בעומס:\n${url}`;
@@ -1880,6 +2078,15 @@ function bind(){
   };
   $('#teamHintBtn').onclick = () => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); $('#setTeam').focus(); }, 120); };
   $('#conflictLoad').onclick = () => openFromTeam(activeId);
+  $('#diagBtn').onclick = runDiagnostics;
+  $('#revBtn').onclick = loadRevs;
+  $('#stTeam').onclick = () => {
+    if (isConnected()){ const n = unbackedCount(); toast(n ? `מחובר לענן — ${n} צ'קליסטים בהעלאה` : 'מחובר לענן — כל הצ\'קליסטים מגובים'); return; }
+    if (!navigator.onLine) return toast('אין קליטה — הצ\'קליסטים שמורים במכשיר ויעלו לענן כשהקליטה תחזור');
+    showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); runDiagnostics(); }, 150);
+  };
+  $('#restoreAllBtn').onclick = restoreAllFromCloud;
+  $('#cloudAlertBtn').onclick = () => { showStep(5); setTimeout(() => { $('#teamPanel').scrollIntoView({ behavior:'smooth', block:'start' }); runDiagnostics(); }, 150); };
   window.addEventListener('fbx-ready', cloudStart);
   window.addEventListener('fbx-failed', updateIndicators);
   $('#saveSettingsBtn').onclick = () => {
@@ -1938,6 +2145,11 @@ async function init(){
     }
   }
   restore(saved || {});
+  if (!settings.teamKey && !location.hash.startsWith('#join=')){
+    settings.teamKey = makeTeamKey(); settings.autoTeam = true;
+    if (!settings.deviceName) settings.deviceName = 'מכשיר ' + Math.random().toString(36).slice(2, 6).toUpperCase();
+    LS.set(K.settings, settings);
+  }
   const jm = location.hash.match(/^#join=(.+)$/);
   if (jm){
     const key = decodeURIComponent(jm[1]);
@@ -1969,7 +2181,14 @@ async function init(){
   if (window.FBX && !CLOUD.started) cloudStart();
   if (settings.teamKey && view === 'home') homeScope = 'team', renderHome();
 }
-init();
+// אפליקציה שנפתחת גם בלי קליטה + התקנה למסך הבית
+let installEvt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; const b = $('#installBtn'); if (b) b.hidden = false; });
+document.addEventListener('click', async e => { if (e.target.id !== 'installBtn' || !installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch(_){} installEvt = null; e.target.hidden = true; });
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')){
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+init().then(() => { const v = $('#verTxt'); if (v) v.textContent = CONFIG.APP_VERSION; fillDatalists(); });
 </script>
 <script type="module">
 /* ================= Firebase — סנכרון צוות ================= */
@@ -2005,8 +2224,22 @@ if (!window.FBX) try {
       g.forEach(x => { sigs[x.id] = x.data().data; });
       return { data: s.data(), sigs };
     },
-    listen: (t, cb, err) => F.onSnapshot(F.query(F.collection(db, 'teams', t, 'checklists'), F.orderBy('updatedAt', 'desc'), F.limit(200)), { includeMetadataChanges: true }, s => cb(s.docs.map(d => d.data()), s.metadata), err),
-    remove: (t, id) => F.deleteDoc(cdoc(t, id))
+    listen: (t, cb, err) => F.onSnapshot(F.query(F.collection(db, 'teams', t, 'checklists'), F.orderBy('updatedAt', 'desc'), F.limit(300)), { includeMetadataChanges: true },
+      s => cb(s.docs.filter(d => d.id !== '__health').map(d => ({ ...d.data(), __pend: d.metadata.hasPendingWrites })), s.metadata), err),
+    async health(t){
+      const ref = cdoc(t, '__health'), at = Date.now();
+      await F.setDoc(ref, { at, kind:'health' });
+      const s = await F.getDocFromServer(ref);
+      const ok = s.exists() && s.data().at === at;
+      return ok;
+    },
+    remove: (t, id) => F.deleteDoc(cdoc(t, id)),
+    mark: (t, id, v) => F.setDoc(cdoc(t, id), v, { merge: true }),
+    saveRev: (t, id, rev) => F.setDoc(F.doc(db, 'teams', t, 'checklists', id, 'revs', rev.at + '_' + Math.random().toString(36).slice(2, 7)), rev),
+    async listRevs(t, id){
+      const s = await F.getDocs(F.query(F.collection(db, 'teams', t, 'checklists', id, 'revs'), F.orderBy('at', 'desc'), F.limit(40)));
+      return s.docs.map(d => ({ rid: d.id, ...d.data() }));
+    }
   };
   window.dispatchEvent(new Event('fbx-ready'));
 } catch(e){
