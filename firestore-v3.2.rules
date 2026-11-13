@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function member(team) {
+      return request.auth != null && team.size() >= 16;
+    }
+
+    // צ'קליסט נחשב חתום כשיש בטופס חותמת מנהל
+    function sealedData(d) {
+      return ('form' in d) && ('seal' in d.form) && d.form.seal != null;
+    }
+
+    function parentSealed(team, id) {
+      return exists(/databases/$(database)/documents/teams/$(team)/checklists/$(id))
+          && sealedData(get(/databases/$(database)/documents/teams/$(team)/checklists/$(id)).data);
+    }
+
+    match /teams/{team}/checklists/{id} {
+      allow read, create: if member(team);
+
+      // אחרי חתימת מנהל — תוכן הטופס קפוא לצמיתות.
+      // מותר רק לעדכן נתונים תפעוליים: סריקות תרמיות, סטטוס שליחה, טיימר ושיוך לסל המחזור.
+      allow update: if member(team)
+                    && (!sealedData(resource.data) || request.resource.data.form == resource.data.form);
+
+      allow delete: if false;
+
+      // חתימות: אחרי נעילה אי אפשר להחליף חתימה קיימת, ואי אפשר למחוק
+      match /sigs/{sig} {
+        allow read: if member(team);
+        allow create: if member(team)
+                      && request.resource.data.data is string
+                      && request.resource.data.data.size() < 900000;
+        allow update: if member(team) && !parentSealed(team, id)
+                      && request.resource.data.data is string
+                      && request.resource.data.data.size() < 900000;
+        allow delete: if false;
+      }
+
+      // היסטוריית גרסאות: רק הוספה
+      match /revs/{rev} {
+        allow read: if member(team);
+        allow create: if member(team) && request.resource.data.at is int;
+        allow update, delete: if false;
+      }
+    }
+  }
+}
