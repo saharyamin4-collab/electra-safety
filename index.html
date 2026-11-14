@@ -200,6 +200,10 @@ input:disabled,textarea:disabled{opacity:.7}
 .sig-wrap.signed .sig-ok{display:block}
 .sig-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
 .worker{padding:16px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface-2);margin-bottom:12px}
+.w-title{display:flex;align-items:center;gap:10px;min-width:0}
+.w-num{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:var(--grad);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center}
+.w-who{font-weight:800;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.w-who.empty{color:var(--muted);font-weight:600}
 .worker-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .declaration{font-size:16px;line-height:1.8;padding:16px;border-radius:18px;background:var(--surface-2);border:1px solid var(--border);margin-bottom:12px}
 
@@ -431,7 +435,7 @@ body[data-view="form"] .home-only{display:none!important}
 </header>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gMini" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22c3ee"/><stop offset="1" stop-color="#2b54e6"/></linearGradient></defs></svg>
-<datalist id="dlPeople"></datalist><datalist id="dlWorkers"></datalist>
+<datalist id="dlPeople"></datalist><datalist id="dlWorkers"></datalist><datalist id="dlCompanies"></datalist>
 <main id="main">
   <section id="homeView" class="home-only" aria-labelledby="homeT">
     <div class="hero">
@@ -803,7 +807,7 @@ body[data-view="form"] .home-only{display:none!important}
 const CONFIG = {
   DEFAULT_WEBHOOK_URL: '',      // ניתן להדביק כאן את כתובת ה-Web App, או להזין במסך ההגדרות
   SCAN_INTERVAL_MIN: 15,
-  APP_VERSION: '3.5.3',
+  APP_VERSION: '3.5.4',
   ADMIN_HASH: '2430bc8f',      // קוד מנהל (מוצפן)
   ADMIN_MINUTES: 15,
   SNAPSHOT_EVERY_MS: 3 * 60000, // נקודת שחזור אוטומטית לכל היותר כל 3 דקות
@@ -1065,10 +1069,10 @@ function addWorker(data){
   const el = document.createElement('div');
   el.className = 'worker'; el.dataset.id = id;
   el.innerHTML = `
-    <div class="worker-head"><strong class="w-title">עובד</strong><button type="button" class="btn btn-sm btn-quiet-danger" data-act="remove">הסרה</button></div>
+    <div class="worker-head"><span class="w-title"><span class="w-num">1</span><span class="w-who">חותם חדש</span></span><button type="button" class="btn btn-sm btn-quiet-danger" data-act="remove">הסרה</button></div>
     <div class="grid2 field">
-      <div><label class="lbl" for="w_${id}_name">שם מלא <span class="req">*</span></label><input type="text" id="w_${id}_name" data-f="name" autocomplete="off" list="dlWorkers"></div>
-      <div><label class="lbl" for="w_${id}_idc">ת.ז / חברה <span class="req">*</span></label><input type="text" id="w_${id}_idc" data-f="idc" autocomplete="off"></div>
+      <div><label class="lbl" for="w_${id}_name">שם מלא <span class="req">*</span></label><input type="text" id="w_${id}_name" data-f="name" autocomplete="off" list="dlWorkers" placeholder="שם פרטי ומשפחה"></div>
+      <div><label class="lbl" for="w_${id}_idc">נציג של חברה <span class="req">*</span></label><input type="text" id="w_${id}_idc" data-f="idc" autocomplete="off" list="dlCompanies" placeholder="למשל: אלקטרה / שם הקבלן"></div>
     </div>
     <div class="sig-wrap" id="w_${id}_sig"><canvas aria-label="משטח חתימת עובד"></canvas><div class="sig-line"></div><div class="sig-hint">חתימה באצבע או בעט</div><span class="sig-ok">✓ נחתם</span></div>
     <div class="sig-actions"><button type="button" class="btn btn-sm" data-act="clear">ניקוי חתימה</button></div>`;
@@ -1081,7 +1085,13 @@ function addWorker(data){
   renumberWorkers();
   return w;
 }
-function renumberWorkers(){ workers.forEach((w, i) => $('.w-title', w.el).textContent = `עובד ${i+1}`); $('#workerCount').textContent = workers.length; }
+function workerTitle(w, i){
+  const n = $('[data-f=name]', w.el).value.trim(), c = $('[data-f=idc]', w.el).value.trim();
+  $('.w-num', w.el).textContent = i + 1;
+  $('.w-who', w.el).textContent = n ? (c ? `${n} · ${c}` : n) : 'חותם חדש';
+  $('.w-who', w.el).classList.toggle('empty', !n);
+}
+function renumberWorkers(){ workers.forEach((w, i) => workerTitle(w, i)); $('#workerCount').textContent = workers.length; }
 
 /* ================= איסוף, שמירה ושחזור ================= */
 function collect(){
@@ -1160,9 +1170,10 @@ function validateData(s){
   if (!s.declAck) add(4, 'אישור הקראת ההצהרה', 'declAck');
   if (!s.workers.length) add(4, 'יש להוסיף לפחות עובד אחד', 'addWorkerBtn');
   s.workers.forEach((w, i) => {
-    if (!w.name) add(4, `עובד ${i+1}: שם מלא`, `w_${w.id}_name`);
-    if (!w.idc) add(4, `עובד ${i+1}: ת.ז / חברה`, `w_${w.id}_idc`);
-    if (!w.sig) add(4, `עובד ${i+1}: חסרה חתימה`, `w_${w.id}_sig`);
+    const who = w.name || `חותם ${i+1}`;
+    if (!w.name) add(4, `חותם ${i+1}: שם מלא`, `w_${w.id}_name`);
+    if (!w.idc) add(4, `${who}: נציג של איזו חברה`, `w_${w.id}_idc`);
+    if (!w.sig) add(4, `${who}: חסרה חתימה`, `w_${w.id}_sig`);
   });
   if (!s.mgrSig) add(4, 'חסרה חתימת מנהל הבדיקה', 'mgrSigWrap');
   return { s, errors: e };
@@ -1559,6 +1570,7 @@ function learnPeople(f){
 function fillDatalists(){
   $('#dlPeople').innerHTML = Object.keys(people.roles).sort().map(n => `<option value="${esc(n)}">`).join('');
   $('#dlWorkers').innerHTML = Object.keys(people.workers).sort().map(n => `<option value="${esc(n)}">`).join('');
+  $('#dlCompanies').innerHTML = [...new Set(['אלקטרה', ...Object.values(people.workers)])].filter(Boolean).sort().map(n => `<option value="${esc(n)}">`).join('');
 }
 function autofillFrom(el){
   if (el.dataset.roleName){
@@ -2035,7 +2047,7 @@ function renderDoc(s, sub, sc, toPrintArea){
     <div class="r-crit r-row"><b class="t">⚠ דגשי חירום מחייבים — לקחי תחקיר</b><ol>${CRITICAL.map(c => `<li>${c}</li>`).join('')}</ol></div>
     <div class="r-sec"><div class="r-h r-row">הצהרת עובדים וחתימות<small>${workers.length} עובדים</small></div>
       <div class="r-decl r-row">${esc(DECLARATION)}<br>${s.declAck ? '<span class="r-ok">✓ ההצהרה הוקראה בפני העובדים</span>' : '<span class="r-bad">✕ טרם אושרה הקראת ההצהרה</span>'}</div>
-      <table><thead><tr><th style="width:40px">#</th><th>שם מלא</th><th>ת.ז / חברה</th><th>חתימה</th></tr></thead><tbody>
+      <table><thead><tr><th style="width:40px">#</th><th>שם מלא</th><th>נציג של חברה</th><th>חתימה</th></tr></thead><tbody>
       ${workers.map((w, i) => `<tr><td>${i + 1}</td><td><b>${esc(w.name)}</b></td><td class="r-ltr">${esc(w.idc)}</td><td>${sigImg(w.sig)}</td></tr>`).join('')}</tbody></table></div>
     <div class="r-sec"><div class="r-h r-row">אישור מנהל הבדיקה</div>
       <div class="r-mgr r-row"><div class="who"><span>מנהל בדיקה (CX-Electra)</span><b>${esc(team[MGR_I].name || '—')}</b><div class="r-ltr" style="color:#667085;font-size:12px">${esc(team[MGR_I].phone || '')}</div></div><div style="margin-inline-start:auto">${sigImg(s.mgrSig)}</div></div></div>
@@ -2337,6 +2349,7 @@ function bind(){
     const sc = e.target.closest('[data-scan]'); if (sc) logScan(sc.dataset.scan);
   });
   $('main').addEventListener('change', e => { if (e.target.matches('[data-role-name],[data-f=name]') && autofillFrom(e.target)) onChange(); });
+  $('main').addEventListener('input', e => { const we = e.target.closest('.worker'); if (we){ const i = workers.findIndex(x => x.el === we); if (i >= 0) workerTitle(workers[i], i); } });
   $('main').addEventListener('input', e => { if (!e.target.closest('details')) onChange(); });
   $('main').addEventListener('change', e => { if (e.target.closest('details')) return; if (e.target.type === 'checkbox' || e.target.type === 'radio') haptic(8); onChange(); });
   $('#prevBtn').onclick = () => showStep(currentStep - 1);
