@@ -381,6 +381,48 @@ body[data-view="form"] .home-only{display:none!important}
 .seal-stamp small{display:block;font-weight:500;color:#2f5f45;direction:ltr;text-align:right;font-size:10px;word-break:break-all}
 .pdfdoc{position:fixed;left:-12000px;top:0;width:794px;padding:0 40px;background:#fff;color:#000;font-family:Heebo,Arial,sans-serif;font-size:14px;line-height:1.45;direction:rtl;box-sizing:border-box}
 .lock-ic{width:46px;height:46px;border-radius:14px;background:var(--surface-3);display:grid;place-items:center;font-size:22px;flex:0 0 auto}
+.db-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:2px 2px 14px}
+.db-head h1{font-size:30px;font-weight:900;margin:0;line-height:1.1;letter-spacing:-.01em}
+.db-live{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13.5px;font-weight:600;margin-top:5px}
+.db-live .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(18,183,106,.18)}
+.db-live.off .dot{background:#98a2b3;box-shadow:none}
+.db-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.db-tile{border:1px solid var(--border);background:var(--surface);border-radius:18px;padding:11px 10px;text-align:start;cursor:pointer;font:inherit;color:var(--text);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:5px;min-height:76px;transition:background .15s,color .15s}
+.db-tile b{font-size:24px;font-weight:900;line-height:1}
+.db-tile span{font-size:12.5px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.db-tile span i{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.db-tile.on{background:var(--text);color:var(--surface);border-color:var(--text)}
+.db-tile.on span{color:inherit;opacity:.85}
+.db-search{position:relative;margin-bottom:10px}
+.db-search input{width:100%;font:inherit;font-size:16px;color:var(--text);-webkit-appearance:none;appearance:none;border:1.5px solid var(--border);padding:12px 16px;padding-inline-start:46px;min-height:50px;border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
+.db-search input:focus{outline:none;border-color:var(--blue-2);box-shadow:0 0 0 4px var(--focus)}
+.db-search input::-webkit-search-cancel-button{-webkit-appearance:none}
+.db-search svg{position:absolute;inset-inline-start:15px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted);pointer-events:none}
+.db-tools{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.seg2{display:flex;gap:3px;padding:3px;background:var(--surface-3);border:1px solid var(--border);border-radius:14px;flex:1;min-width:0}
+.seg2 button{flex:1;border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:800;padding:8px 6px;border-radius:11px;cursor:pointer;min-height:40px;white-space:nowrap}
+.seg2 button.on{background:var(--surface);color:var(--text);box-shadow:0 1px 2px rgba(16,24,40,.06),0 6px 14px -8px rgba(16,24,40,.25)}
+select.db-select{width:auto;flex:0 0 auto;min-height:48px;padding:8px 14px;padding-inline-end:34px;border-radius:14px;font-size:14.5px;font-weight:700;background-color:var(--surface);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23667085' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:12px;background-position:left 13px center}
+.db-day{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800;color:var(--muted);margin:18px 4px 8px}
+.db-day span{background:var(--surface-3);border-radius:999px;padding:1px 8px;font-size:12px}
+.row{--sc:#f5a524;position:relative;background:var(--surface);border:1px solid var(--border);border-inline-start:5px solid var(--sc);border-radius:18px;margin-bottom:8px;box-shadow:var(--shadow)}
+.row.s-sealed{--sc:#7c3aed}.row.s-done{--sc:#12b76a}.row.s-trash{--sc:#e5263d}
+.row.current{box-shadow:0 0 0 2px var(--blue-2),var(--shadow)}
+.row-main{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;font:inherit;color:inherit;text-align:start;padding:12px;padding-inline-end:50px;cursor:pointer;border-radius:18px}
+.row-more{position:absolute;inset-inline-end:6px;top:8px;width:40px;height:40px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-size:22px;font-weight:900;line-height:1;cursor:pointer}
+.row-more[aria-expanded="true"]{background:var(--surface-3);color:var(--text)}
+.row-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.row-txt b{font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-sub{font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:5px;font-size:12px;color:var(--muted);font-weight:600}
+.tag{font-weight:800;font-size:12px;padding:2px 9px;border-radius:999px;color:#9a5b00;background:#fff4dc}
+.tag.sealed{color:#5b21b6;background:#f1e9ff}.tag.done{color:#067647;background:#e3f8ec}.tag.trash{color:#b4122a;background:#ffe9ec}.tag.cur{color:#fff;background:var(--grad)}
+:root[data-theme="dark"] .tag{filter:brightness(.92)}
+.mini.sm{width:46px;height:46px}.mini.sm svg{width:46px;height:46px}.mini.sm b{font-size:12px}.mini.sm circle{stroke-width:6}
+.row-actions{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 12px}
+.row-actions .btn{min-height:42px;font-size:14px;padding:6px 12px;border-radius:12px;flex:1 1 auto}
+.db-trash{display:block;margin:18px auto 0;border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:700;cursor:pointer;padding:8px 12px}
+.db-trash-head{display:flex;align-items:center;justify-content:space-between;margin:14px 4px 4px;font-weight:900;font-size:17px}
 .pill.dev{color:var(--muted);background:var(--surface-2)}
 .pill.cur{color:#fff;background:var(--grad);border-color:transparent}
 .lc-actions{display:flex;gap:8px;padding:12px 18px;background:var(--surface-2);border-top:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
@@ -438,20 +480,11 @@ body[data-view="form"] .home-only{display:none!important}
 <datalist id="dlPeople"></datalist><datalist id="dlWorkers"></datalist><datalist id="dlCompanies"></datalist>
 <main id="main">
   <section id="homeView" class="home-only" aria-labelledby="homeT">
-    <div class="hero">
-      <div class="hero-top">
-        <h1 id="homeT">תמונת מצב<br><span class="grad">כל הצ'קליסטים</span></h1>
-        <span style="display:flex;gap:8px"><button type="button" class="btn btn-sm btn-primary" id="installBtn" hidden>התקנה</button><button type="button" class="icon-btn" id="themeBtn" aria-label="מצב תצוגה"></button></span>
-      </div>
-      <p>כל הצ'קליסטים שנפתחו בכל המכשירים מופיעים כאן ומתעדכנים בזמן אמת. לחיצה על כרטיס פותחת אותו וממשיכה מאיפה שעצרו.</p>
+    <div class="db-head">
+      <div><h1 id="homeT">צ'קליסטים</h1><div class="db-live" id="dbLiveBox"><i class="dot"></i><span id="dbLive">…</span></div></div>
+      <span style="display:flex;gap:8px"><button type="button" class="btn btn-sm btn-primary" id="installBtn" hidden>התקנה</button><button type="button" class="icon-btn" id="themeBtn" aria-label="מצב תצוגה"></button></span>
     </div>
-    <div class="hero-stats four">
-      <div class="hstat"><b id="hmDraft">0</b><span>טיוטות</span></div>
-      <div class="hstat primary"><b id="hmMon">0</b><span>חתומים</span></div>
-      <div class="hstat"><b id="hmDone">0</b><span>נשלחו</span></div>
-      <div class="hstat" id="hmExcBox"><b id="hmExc">0</b><span>סה"כ</span></div>
-    </div>
-    <div class="filters" id="scopeFilters"></div>
+    <div class="db-tiles" id="dbTiles" role="tablist" aria-label="סינון לפי סטטוס"></div>
     <div class="alert alert-danger" id="cloudAlert" hidden style="display:flex;gap:12px;align-items:center">
       <span style="flex:1"><b>הגיבוי לענן לא פעיל</b><br><span id="cloudAlertTxt" class="hint" style="margin:0"></span></span>
       <button type="button" class="btn btn-sm btn-danger" id="cloudAlertBtn">אבחון ותיקון</button>
@@ -460,8 +493,14 @@ body[data-view="form"] .home-only{display:none!important}
       <span style="flex:1"><b>רוצה לראות את כל הצוות?</b><br><span class="hint" style="margin:0">חבר קוד צוות, וכל הצ'קליסטים מכל המכשירים יופיעו כאן.</span></span>
       <button type="button" class="btn btn-sm btn-primary" id="teamHintBtn">חיבור</button>
     </div>
-    <div class="filters" id="statusFilters"></div>
-    <div class="filters" id="siteFilters"></div>
+    <div class="db-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      <input type="search" id="dbSearch" placeholder="חיפוש: רביע, מודול, מנהל, חברה" aria-label="חיפוש צ'קליסטים" autocomplete="off">
+    </div>
+    <div class="db-tools">
+      <div class="seg2" id="scopeFilters" role="tablist" aria-label="היקף"></div>
+      <select id="siteSel" class="db-select" aria-label="סינון לפי אתר"></select>
+    </div>
     <div id="cards"></div>
   </section>
   <div class="alert alert-warn form-only" id="conflictBar" hidden style="display:flex;gap:10px;align-items:center"><span id="conflictTxt" style="flex:1;font-weight:700"></span><button type="button" class="btn btn-sm btn-primary" id="conflictLoad">טעינת הגרסה העדכנית</button></div>
@@ -807,7 +846,7 @@ body[data-view="form"] .home-only{display:none!important}
 const CONFIG = {
   DEFAULT_WEBHOOK_URL: '',      // ניתן להדביק כאן את כתובת ה-Web App, או להזין במסך ההגדרות
   SCAN_INTERVAL_MIN: 15,
-  APP_VERSION: '3.6.0',
+  APP_VERSION: '3.7.0',
   ADMIN_HASH: '2430bc8f',      // קוד מנהל (מוצפן)
   ADMIN_MINUTES: 15,
   ORG_TEAM_KEY: 'CXE-ORG-kx668vjsgsjx5b7xrf7x', // סביבת עבודה משותפת לכל המכשירים בארגון
@@ -1198,7 +1237,7 @@ function metaOf(rec){
   return { id:rec.id, createdAt:rec.createdAt || Date.now(), updatedAt:rec.updatedAt || Date.now(), site:f.site, quadrant:f.quadrant, hall:f.hall,
     location:locStr(f), dt:f.dt, types:f.types, load:isLoad(f), status:statusOf(rec.submission, f), sync: rec.submission ? rec.submission.status : null,
     subId: rec.submission ? rec.submission.id : null, closedAt: rec.submission ? rec.submission.closedAt || null : null,
-    by: (f.team[MGR_I] && f.team[MGR_I].name) || '', pct:pctOf(f, errors), sealed: !!(rec.form && rec.form.seal), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
+    by: (f.team[MGR_I] && f.team[MGR_I].name) || '', missing: errors.length, cos: [...new Set(f.workers.map(w => w.idc).filter(Boolean))].slice(0, 8), pct:pctOf(f, errors), sealed: !!(rec.form && rec.form.seal), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
     workers:f.workers.filter(w => w.name || w.sig).length, timer:rec.timer || {}, empty: !hasContent(f) && !rec.submission };
 }
 function activeRecord(){ const prev = index.find(m => m.id === activeId); if (!editAt) editAt = prev ? prev.updatedAt : Date.now(); return { id:activeId, createdAt: prev ? prev.createdAt : Date.now(), updatedAt:editAt, form:collect(), submission, scans, timer }; }
@@ -1283,60 +1322,85 @@ function homeList(){
   });
   return [...map.values()];
 }
+let homeQuery = '', openMore = null;
+function ago(ts){
+  const m = Math.round((Date.now() - (ts || 0)) / 60000);
+  if (m < 1) return 'עכשיו'; if (m < 60) return `לפני ${m} דק׳`;
+  const hh = Math.round(m / 60); if (hh < 24) return `לפני ${hh} שע׳`;
+  const d = Math.round(hh / 24); return d === 1 ? 'אתמול' : `לפני ${d} ימים`;
+}
+function dayKey(m){ const d = new Date(m.dt || m.updatedAt || Date.now()); return isNaN(d) ? 'x' : d.toDateString(); }
+function dayLabel(k){
+  if (k === 'x') return 'ללא תאריך';
+  const d = new Date(k), t = new Date(); t.setHours(0,0,0,0);
+  const diff = Math.round((t - d) / 86400000);
+  const dn = d.toLocaleDateString('he-IL', { weekday:'long' }), ds = d.toLocaleDateString('he-IL', { day:'numeric', month:'numeric' });
+  return diff === 0 ? `היום · ${ds}` : diff === 1 ? `אתמול · ${ds}` : `${dn} · ${ds}`;
+}
+function dbStatus(m){ return m.trashed ? 'trash' : m.status === 'done' ? 'done' : m.sealed ? 'sealed' : 'draft'; }
 function renderHome(){
   const team = homeScope === 'team' && !!settings.teamKey;
-  $('#scopeFilters').hidden = !settings.teamKey;
   $('#teamHint').hidden = !!settings.teamKey;
-  if (settings.teamKey){
-    const nLocal = index.filter(m => !(m.empty && m.id !== activeId)).length;
-    $('#scopeFilters').innerHTML = `<button type="button" class="fchip ${!team ? 'on' : ''}" data-scope="device">רק במכשיר הזה<span class="n">${nLocal}</span></button><button type="button" class="fchip ${team ? 'on' : ''}" data-scope="team">כל הצ'קליסטים<span class="n">${CLOUD.ready ? CLOUD.docs.length : '…'}</span></button>`;
-  }
-  const list = homeList();
-  const cnt = { all:list.length, draft:0, monitor:0, done:0 };
-  list.forEach(m => cnt[m.status] = (cnt[m.status] || 0) + 1);
-  $('#hmDraft').textContent = cnt.draft; $('#hmMon').textContent = list.filter(m => m.sealed).length; $('#hmDone').textContent = cnt.done;
-  $('#hmExc').textContent = list.length;
+  const live = $('#dbLiveBox'), synced = team && CLOUD.ready && !CLOUD.err && navigator.onLine;
+  live.classList.toggle('off', !synced);
   const nTrash = team ? CLOUD.docs.filter(d => d.deleted && d.meta).length : 0;
   if (homeFilter === 'trash' && !team) homeFilter = 'all';
-  $('#statusFilters').innerHTML = (nTrash ? `<button type="button" class="fchip ${homeFilter === 'trash' ? 'on' : ''}" data-hf="trash">🗑 סל מחזור<span class="n">${nTrash}</span></button>` : '') + [['all','הכל'],['draft','טיוטות'],['done','נשלחו']].map(([k, t]) => `<button type="button" class="fchip ${homeFilter === k ? 'on' : ''}" data-hf="${k}">${t}<span class="n">${cnt[k]}</span></button>`).join('');
-  $('#siteFilters').innerHTML = [['all','כל האתרים'], ...Object.keys(SITES).map(s => [s, s])].map(([k, t]) => `<button type="button" class="fchip ${homeSite === k ? 'on' : ''}" data-hs="${esc(k)}">${esc(t)}</button>`).join('');
-  const tOf = m => m.id === activeId && m.isLocal ? timer : m.timer;
-  const rank = m => { const ti = timerInfo(tOf(m)); return ti && ti.due ? 0 : m.status === 'monitor' ? 1 : m.status === 'draft' ? 2 : 3; };
-  const shown = list.filter(m => (homeFilter === 'all' || homeFilter === 'trash' || m.status === homeFilter) && (homeSite === 'all' || m.site === homeSite))
-    .sort((a, b) => rank(a) - rank(b) || (b.updatedAt || 0) - (a.updatedAt || 0));
+  const all = homeList();
+  $('#dbLive').textContent = (synced ? 'מסונכרן בזמן אמת' : !navigator.onLine ? 'אין קליטה · מוצג מהמכשיר' : team ? 'מתחבר לענן…' : 'רק מהמכשיר הזה') + (homeFilter === 'trash' ? '' : ` · ${all.length} צ'קליסטים`);
+  // scope + site
+  const nLocal = index.filter(m => !(m.empty && m.id !== activeId)).length;
+  $('#scopeFilters').hidden = !settings.teamKey;
+  $('#scopeFilters').innerHTML = `<button type="button" class="${team ? 'on' : ''}" data-scope="team">כל המכשירים</button><button type="button" class="${!team ? 'on' : ''}" data-scope="device">המכשיר שלי · ${nLocal}</button>`;
+  const ss = $('#siteSel'), sv = [['all','כל האתרים'], ...Object.keys(SITES).map(s => [s, s])];
+  if (ss.options.length !== sv.length) ss.innerHTML = sv.map(([k, t]) => `<option value="${esc(k)}">${esc(t)}</option>`).join('');
+  ss.value = homeSite;
+  // tiles (counts by scope + site)
+  const base = all.filter(m => homeSite === 'all' || m.site === homeSite);
+  const c = { draft:0, sealed:0, done:0 }; base.forEach(m => c[dbStatus(m)] = (c[dbStatus(m)] || 0) + 1);
+  const tiles = [['all','הכל',base.length,'#98a2b3'],['draft','בעבודה',c.draft,'#f5a524'],['sealed','חתומים',c.sealed,'#7c3aed'],['done','נשלחו',c.done,'#12b76a']];
+  $('#dbTiles').innerHTML = tiles.map(([k, t, n, col]) => `<button type="button" class="db-tile ${homeFilter === k ? 'on' : ''}" data-hf="${k}" role="tab" aria-selected="${homeFilter === k}"><b>${n}</b><span><i style="background:${col}"></i>${t}</span></button>`).join('');
+  // filter + search
+  const q = homeQuery;
+  const hay = m => [m.site, m.quadrant && 'רביע ' + m.quadrant, m.hall && 'מודול ' + m.hall, m.by, m.device, m.equipment, ...(m.cos || []), ...(m.types || [])].filter(Boolean).join(' ').toLowerCase();
+  const shown = base.filter(m => (homeFilter === 'all' || homeFilter === 'trash' || dbStatus(m) === homeFilter) && (!q || hay(m).includes(q)))
+    .sort((a, b) => new Date(b.dt || b.updatedAt) - new Date(a.dt || a.updatedAt) || (b.updatedAt || 0) - (a.updatedAt || 0));
+  let html = homeFilter === 'trash' ? `<div class="db-trash-head">🗑 סל מחזור<button type="button" class="btn btn-sm" data-hf="all">חזרה</button></div>` : '';
   if (!shown.length){
-    $('#cards').innerHTML = `<div class="panel home-empty"><b>${list.length ? 'אין צ\'קליסטים בסינון הזה' : team ? 'עדיין אין צ\'קליסטים בצוות' : 'עדיין אין צ\'קליסטים'}</b><span class="hint">צ'קליסט חדש נפתח בכפתור למטה.</span></div>`;
-    return;
+    html += `<div class="panel home-empty"><b>${q ? 'לא נמצאו צ\'קליסטים לחיפוש הזה' : all.length ? 'אין צ\'קליסטים בסינון הזה' : 'עדיין אין צ\'קליסטים'}</b><span class="hint">${q || all.length ? 'נסו חיפוש או סינון אחר.' : 'פותחים צ\'קליסט חדש בכפתור "צ\'קליסט חדש" למטה.'}</span></div>`;
+  } else {
+    let lastDay = null;
+    const groups = {}; shown.forEach(m => { const k = dayKey(m); groups[k] = (groups[k] || 0) + 1; });
+    shown.forEach(m => {
+      const k = dayKey(m);
+      if (k !== lastDay){ html += `<div class="db-day">${esc(dayLabel(k))}<span>${groups[k]}</span></div>`; lastDay = k; }
+      const st = dbStatus(m), cur = m.id === activeId && m.isLocal, pct = st === 'done' || st === 'sealed' ? 100 : (m.pct || 0);
+      const title = [m.quadrant && 'רביע ' + m.quadrant, m.hall && 'מודול ' + m.hall].filter(Boolean).join(' · ') || 'צ\'קליסט חדש';
+      const sub = [m.site || 'אתר לא נבחר', m.by ? '👤 ' + m.by : '', m.dt ? fmtTime(m.dt) : ''].filter(Boolean).join(' · ');
+      const tag = st === 'trash' ? '<span class="tag trash">בסל המחזור</span>' : st === 'done' ? '<span class="tag done">✓ נשלח</span>' : st === 'sealed' ? '<span class="tag sealed">🔏 חתום · ממתין לשליחה</span>'
+        : `<span class="tag">בעבודה${m.missing != null ? ` · חסרים ${m.missing}` : ` · ${pct}%`}</span>`;
+      const where = team ? (m.localOnly ? '<span>⏳ טרם עלה לענן</span>' : m.isLocal ? '<span>📱 המכשיר שלי</span>' : (m.device ? `<span>📱 ${esc(m.device)}</span>` : '')) : '';
+      const openAttr = team ? `data-open-team="${esc(m.id)}"` : `data-open="${esc(m.id)}"`;
+      const actions = m.trashed
+        ? `<button type="button" class="btn btn-primary" data-undel="${esc(m.id)}">שחזור מסל המחזור</button>`
+        : `<button type="button" class="btn btn-primary" ${openAttr}>${st === 'done' || st === 'sealed' ? 'צפייה' : 'המשך מילוי'}</button>
+           <button type="button" class="btn" data-lc="${m.isLocal ? 'print' : 'print-team'}" data-id="${esc(m.id)}">שיתוף PDF</button>
+           <button type="button" class="btn" data-lc="dup" data-id="${esc(m.id)}" ${m.isLocal ? '' : 'hidden'}>שכפול צוות</button>
+           ${m.isLocal ? `<button type="button" class="btn" data-lc="file" data-id="${esc(m.id)}">קובץ גיבוי</button><button type="button" class="btn btn-quiet-danger" data-lc="del" data-id="${esc(m.id)}">מחיקה</button>` : ''}`;
+      html += `<article class="row s-${st} ${cur ? 'current' : ''}">
+        <button type="button" class="row-main" ${m.trashed ? '' : openAttr}>
+          <span class="mini sm ${pct === 100 ? 'full' : ''}"><svg viewBox="0 0 62 62"><circle class="bg" cx="31" cy="31" r="25"/><circle class="fg" cx="31" cy="31" r="25" pathLength="100" stroke-dasharray="${pct} 100"/></svg><b>${pct === 100 ? '✓' : pct + '%'}</b></span>
+          <span class="row-txt"><b>${esc(title)}</b><span class="row-sub">${esc(sub)}</span>
+            <span class="row-meta">${cur ? '<span class="tag cur">פתוח עכשיו</span>' : ''}${tag}${where}<span>${esc('עודכן ' + ago(m.updatedAt))}</span></span></span>
+        </button>
+        <button type="button" class="row-more" data-more="${esc(m.id)}" aria-label="פעולות" aria-expanded="${openMore === m.id}">⋯</button>
+        <div class="row-actions" ${openMore === m.id ? '' : 'hidden'}>${actions}</div>
+      </article>`;
+    });
   }
-  $('#cards').innerHTML = shown.map(m => {
-    const cur = m.id === activeId && m.isLocal, ti = timerInfo(tOf(m)), [sc, stx] = m.trashed ? trashUI : (STATUS_UI[m.status] || STATUS_UI.draft);
-    const title = [m.quadrant && 'רביע ' + m.quadrant, m.hall && 'מודול ' + m.hall].filter(Boolean).join(' · ') || 'צ\'קליסט חדש';
-    const types = (m.types || []).map(t => t.replace(/ \(.*\)/, '')).join(', ');
-    const bk = !m.isLocal || !settings.teamKey || m.empty ? '' : backedUp(m) ? '<span class="pill ok">☁ מגובה בענן</span>' : '<span class="pill warn">☁ ממתין לגיבוי</span>';
-    const sync = !settings.webhook ? '' : m.sync === 'queued' || m.sync === 'pending' ? '<span class="pill warn">ממתין ל-Sheets</span>' : m.sync ? '<span class="pill ok">נשלח</span>' : '';
-    const openAttr = team ? `data-open-team="${esc(m.id)}"` : `data-open="${esc(m.id)}"`;
-    const devPill = team ? (m.localOnly ? '<span class="pill warn">טרם סונכרן</span>' : (m.by ? `<span class="pill dev">👤 ${esc(m.by)}</span>` : '') + (m.device && m.device !== settings.deviceName ? `<span class="pill dev">📱 ${esc(m.device)}</span>` : (m.isLocal ? '<span class="pill dev">📱 המכשיר הזה</span>' : ''))) + (m.remoteNewer ? '<span class="pill blue">עדכון בענן</span>' : '') : '';
-    const pct = m.pct || 0;
-    const actions = m.trashed
-      ? `<button type="button" class="btn btn-primary" data-undel="${esc(m.id)}">שחזור מסל המחזור</button>`
-      : m.isLocal
-      ? `<button type="button" class="btn btn-primary" ${openAttr}>${m.status === 'done' ? 'צפייה' : 'המשך'}</button>
-         <button type="button" class="btn" data-lc="print" data-id="${esc(m.id)}">PDF</button>
-         <button type="button" class="btn" data-lc="dup" data-id="${esc(m.id)}" title="צ'קליסט חדש עם אותו אתר וצוות">שכפול צוות</button>
-         <button type="button" class="btn" data-lc="file" data-id="${esc(m.id)}">קובץ</button>
-         <button type="button" class="btn btn-quiet-danger" data-lc="del" data-id="${esc(m.id)}">מחיקה</button>`
-      : `<button type="button" class="btn btn-primary" ${openAttr}>${m.status === 'done' ? 'צפייה' : 'פתיחה והמשך'}</button>
-         <button type="button" class="btn" data-lc="print-team" data-id="${esc(m.id)}">PDF</button>`;
-    return `<article class="lcard ${cur ? 'current' : ''} ${ti && ti.due ? 'due' : ''}">
-      <button type="button" class="lc-main" ${openAttr}>
-        <span class="lc-txt"><small>${esc(m.site || 'אתר לא נבחר')}</small><h3>${esc(title)}</h3><span class="sub">${esc(m.dt ? fmtDT(m.dt) : 'ללא תאריך')}${types ? ' · ' + esc(types) : ''}</span></span>
-        <span class="mini ${pct === 100 ? 'full' : ''}"><svg viewBox="0 0 62 62"><circle class="bg" cx="31" cy="31" r="25"/><circle class="fg" cx="31" cy="31" r="25" pathLength="100" stroke-dasharray="${pct} 100"/></svg><b>${pct === 100 ? '✓' : pct + '%'}</b></span>
-      </button>
-      <div class="lc-badges">${cur ? '<span class="pill cur">פתוח עכשיו</span>' : ''}${m.sealed ? '<span class="pill ok">🔏 חתום</span>' : ''}<span class="pill ${sc}">${stx}</span>${devPill}${bk}${sync}${ti ? `<span class="pill ${ti.cls === 'bad' ? 'bad' : 'warn'}" data-tid="${esc(m.id)}" data-tremote="${m.isLocal ? '' : '1'}">${ti.text}</span>` : ''}${m.scans ? `<span class="pill">${m.scans} סריקות${m.exc ? ` · <b style="color:var(--danger)">${m.exc} חריגות</b>` : ''}${m.maxT != null ? ` · מקס' ${m.maxT}°` : ''}</span>` : ''}${m.workers ? `<span class="pill">${m.workers} עובדים</span>` : ''}</div>
-      <div class="lc-actions">${actions}</div>
-    </article>`;
-  }).join('');
+  if (nTrash && homeFilter !== 'trash') html += `<button type="button" class="db-trash" data-hf="trash">🗑 סל מחזור · ${nTrash}</button>`;
+  $('#cards').innerHTML = html;
 }
+
 function updateHomeTimers(){
   $$('[data-tid]').forEach(el => { const id = el.dataset.tid, remote = el.dataset.tremote === '1', m = remote ? (CLOUD.docs.find(x => x.id === id) || {}) : index.find(x => x.id === id), ti = timerInfo(!remote && id === activeId ? timer : m && m.timer); if (ti){ el.textContent = ti.text; el.className = 'pill ' + (ti.cls === 'bad' ? 'bad' : 'warn'); } });
 }
@@ -2331,6 +2395,7 @@ function bind(){
     const op = e.target.closest('[data-open]'); if (op){ $('#bgAlarm').hidden = true; stopAlarm(); openChecklist(op.dataset.open, op.dataset.step ? +op.dataset.step : null); return; }
     const hf = e.target.closest('[data-hf]'); if (hf){ homeFilter = hf.dataset.hf; renderHome(); return; }
     const hs = e.target.closest('[data-hs]'); if (hs){ homeSite = hs.dataset.hs; renderHome(); return; }
+    const mo = e.target.closest('[data-more]'); if (mo){ openMore = openMore === mo.dataset.more ? null : mo.dataset.more; renderHome(); return; }
     const rv = e.target.closest('[data-rev]'); if (rv){ restoreRev(rv.dataset.rev); return; }
     const ud = e.target.closest('[data-undel]'); if (ud){ const uid2 = ud.dataset.undel; requireAdmin(() => { window.FBX.mark(settings.teamKey, uid2, { deleted:false, deletedAt:null }).then(() => toast('שוחזר מסל המחזור')).catch(err => toast(teamErrText(err))); homeFilter = 'all'; }); return; }
     const ot = e.target.closest('[data-open-team]'); if (ot){ openFromTeam(ot.dataset.openTeam); return; }
@@ -2349,10 +2414,12 @@ function bind(){
     if (e.target.id === 'flushBtn') flushQueue(true);
     const sc = e.target.closest('[data-scan]'); if (sc) logScan(sc.dataset.scan);
   });
-  $('main').addEventListener('change', e => { if (e.target.matches('[data-role-name],[data-f=name]') && autofillFrom(e.target)) onChange(); });
+  $('main').addEventListener('change', e => { if (e.target.closest('#homeView')) return; if (e.target.matches('[data-role-name],[data-f=name]') && autofillFrom(e.target)) onChange(); });
   $('main').addEventListener('input', e => { const we = e.target.closest('.worker'); if (we){ const i = workers.findIndex(x => x.el === we); if (i >= 0) workerTitle(workers[i], i); } });
-  $('main').addEventListener('input', e => { if (!e.target.closest('details')) onChange(); });
-  $('main').addEventListener('change', e => { if (e.target.closest('details')) return; if (e.target.type === 'checkbox' || e.target.type === 'radio') haptic(8); onChange(); });
+  $('main').addEventListener('input', e => { if (!e.target.closest('details, #homeView')) onChange(); });
+  $('#dbSearch').addEventListener('input', e => { homeQuery = e.target.value.trim().toLowerCase(); renderHome(); });
+  $('#siteSel').addEventListener('change', e => { homeSite = e.target.value; renderHome(); });
+  $('main').addEventListener('change', e => { if (e.target.closest('details, #homeView')) return; if (e.target.type === 'checkbox' || e.target.type === 'radio') haptic(8); onChange(); });
   $('#prevBtn').onclick = () => showStep(currentStep - 1);
   $('#nextBtn').onclick = () => showStep(currentStep + 1);
   $('#addWorkerBtn').onclick = () => { const w = addWorker(); onChange(); requestAnimationFrame(() => { w.pad.resize(); $('[data-f=name]', w.el).focus(); }); };

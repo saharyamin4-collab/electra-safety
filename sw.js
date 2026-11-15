@@ -1,5 +1,5 @@
 /* CX-Electra — Service Worker: האפליקציה נפתחת גם בלי קליטה (חדרי חשמל) */
-const VERSION = 'cxe-v3.6.0';
+const VERSION = 'cxe-v3.7.0';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 const CDN_HOSTS = ['www.gstatic.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'cdnjs.cloudflare.com'];
 const PRECACHE_CDN = [
