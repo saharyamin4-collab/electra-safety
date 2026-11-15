@@ -440,10 +440,10 @@ body[data-view="form"] .home-only{display:none!important}
   <section id="homeView" class="home-only" aria-labelledby="homeT">
     <div class="hero">
       <div class="hero-top">
-        <h1 id="homeT">תמונת מצב<br><span class="grad">הצ'קליסטים שלי</span></h1>
+        <h1 id="homeT">תמונת מצב<br><span class="grad">כל הצ'קליסטים</span></h1>
         <span style="display:flex;gap:8px"><button type="button" class="btn btn-sm btn-primary" id="installBtn" hidden>התקנה</button><button type="button" class="icon-btn" id="themeBtn" aria-label="מצב תצוגה"></button></span>
       </div>
-      <p>כל הצ'קליסטים שבמכשיר נשמרים כאן — טיוטות, חתומים ושנשלחו. לחיצה על כרטיס ממשיכה בדיוק מאיפה שעצרת.</p>
+      <p>כל הצ'קליסטים שנפתחו בכל המכשירים מופיעים כאן ומתעדכנים בזמן אמת. לחיצה על כרטיס פותחת אותו וממשיכה מאיפה שעצרו.</p>
     </div>
     <div class="hero-stats four">
       <div class="hstat"><b id="hmDraft">0</b><span>טיוטות</span></div>
@@ -807,9 +807,10 @@ body[data-view="form"] .home-only{display:none!important}
 const CONFIG = {
   DEFAULT_WEBHOOK_URL: '',      // ניתן להדביק כאן את כתובת ה-Web App, או להזין במסך ההגדרות
   SCAN_INTERVAL_MIN: 15,
-  APP_VERSION: '3.5.4',
+  APP_VERSION: '3.6.0',
   ADMIN_HASH: '2430bc8f',      // קוד מנהל (מוצפן)
   ADMIN_MINUTES: 15,
+  ORG_TEAM_KEY: 'CXE-ORG-kx668vjsgsjx5b7xrf7x', // סביבת עבודה משותפת לכל המכשירים בארגון
   SNAPSHOT_EVERY_MS: 3 * 60000, // נקודת שחזור אוטומטית לכל היותר כל 3 דקות
   SNAPSHOT_KEEP: 10,
   ARCHIVE_KEEP: 40
@@ -1197,7 +1198,7 @@ function metaOf(rec){
   return { id:rec.id, createdAt:rec.createdAt || Date.now(), updatedAt:rec.updatedAt || Date.now(), site:f.site, quadrant:f.quadrant, hall:f.hall,
     location:locStr(f), dt:f.dt, types:f.types, load:isLoad(f), status:statusOf(rec.submission, f), sync: rec.submission ? rec.submission.status : null,
     subId: rec.submission ? rec.submission.id : null, closedAt: rec.submission ? rec.submission.closedAt || null : null,
-    pct:pctOf(f, errors), sealed: !!(rec.form && rec.form.seal), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
+    by: (f.team[MGR_I] && f.team[MGR_I].name) || '', pct:pctOf(f, errors), sealed: !!(rec.form && rec.form.seal), scans:sc.length, exc:sc.filter(x => x.status === 'חריג').length, maxT: temps.length ? Math.max(...temps) : null,
     workers:f.workers.filter(w => w.name || w.sig).length, timer:rec.timer || {}, empty: !hasContent(f) && !rec.submission };
 }
 function activeRecord(){ const prev = index.find(m => m.id === activeId); if (!editAt) editAt = prev ? prev.updatedAt : Date.now(); return { id:activeId, createdAt: prev ? prev.createdAt : Date.now(), updatedAt:editAt, form:collect(), submission, scans, timer }; }
@@ -1267,7 +1268,7 @@ function setView(v){
   if (v === 'home'){ upsertMeta(metaOf(activeRecord())); renderHome(); window.scrollTo({ top:0 }); }
   else { $$('.step').forEach(s => s.classList.toggle('active', +s.dataset.step === currentStep)); requestAnimationFrame(resizePads); }
 }
-let homeScope = 'device';
+let homeScope = 'team';
 function homeList(){
   const local = index.filter(m => !(m.empty && m.id !== activeId)).map(m => ({ ...m, isLocal:true }));
   if (homeScope !== 'team' || !settings.teamKey) return local;
@@ -1288,7 +1289,7 @@ function renderHome(){
   $('#teamHint').hidden = !!settings.teamKey;
   if (settings.teamKey){
     const nLocal = index.filter(m => !(m.empty && m.id !== activeId)).length;
-    $('#scopeFilters').innerHTML = `<button type="button" class="fchip ${!team ? 'on' : ''}" data-scope="device">במכשיר הזה<span class="n">${nLocal}</span></button><button type="button" class="fchip ${team ? 'on' : ''}" data-scope="team">כל הצוות<span class="n">${CLOUD.ready ? CLOUD.docs.length : '…'}</span></button>`;
+    $('#scopeFilters').innerHTML = `<button type="button" class="fchip ${!team ? 'on' : ''}" data-scope="device">רק במכשיר הזה<span class="n">${nLocal}</span></button><button type="button" class="fchip ${team ? 'on' : ''}" data-scope="team">כל הצ'קליסטים<span class="n">${CLOUD.ready ? CLOUD.docs.length : '…'}</span></button>`;
   }
   const list = homeList();
   const cnt = { all:list.length, draft:0, monitor:0, done:0 };
@@ -1314,7 +1315,7 @@ function renderHome(){
     const bk = !m.isLocal || !settings.teamKey || m.empty ? '' : backedUp(m) ? '<span class="pill ok">☁ מגובה בענן</span>' : '<span class="pill warn">☁ ממתין לגיבוי</span>';
     const sync = !settings.webhook ? '' : m.sync === 'queued' || m.sync === 'pending' ? '<span class="pill warn">ממתין ל-Sheets</span>' : m.sync ? '<span class="pill ok">נשלח</span>' : '';
     const openAttr = team ? `data-open-team="${esc(m.id)}"` : `data-open="${esc(m.id)}"`;
-    const devPill = team ? (m.localOnly ? '<span class="pill warn">טרם סונכרן</span>' : m.device ? `<span class="pill dev">📱 ${esc(m.device)}</span>` : '') + (m.remoteNewer ? '<span class="pill blue">עדכון בענן</span>' : '') : '';
+    const devPill = team ? (m.localOnly ? '<span class="pill warn">טרם סונכרן</span>' : (m.by ? `<span class="pill dev">👤 ${esc(m.by)}</span>` : '') + (m.device && m.device !== settings.deviceName ? `<span class="pill dev">📱 ${esc(m.device)}</span>` : (m.isLocal ? '<span class="pill dev">📱 המכשיר הזה</span>' : ''))) + (m.remoteNewer ? '<span class="pill blue">עדכון בענן</span>' : '') : '';
     const pct = m.pct || 0;
     const actions = m.trashed
       ? `<button type="button" class="btn btn-primary" data-undel="${esc(m.id)}">שחזור מסל המחזור</button>`
@@ -1324,7 +1325,7 @@ function renderHome(){
          <button type="button" class="btn" data-lc="dup" data-id="${esc(m.id)}" title="צ'קליסט חדש עם אותו אתר וצוות">שכפול צוות</button>
          <button type="button" class="btn" data-lc="file" data-id="${esc(m.id)}">קובץ</button>
          <button type="button" class="btn btn-quiet-danger" data-lc="del" data-id="${esc(m.id)}">מחיקה</button>`
-      : `<button type="button" class="btn btn-primary" ${openAttr}>פתיחה במכשיר הזה</button>
+      : `<button type="button" class="btn btn-primary" ${openAttr}>${m.status === 'done' ? 'צפייה' : 'פתיחה והמשך'}</button>
          <button type="button" class="btn" data-lc="print-team" data-id="${esc(m.id)}">PDF</button>`;
     return `<article class="lcard ${cur ? 'current' : ''} ${ti && ti.due ? 'due' : ''}">
       <button type="button" class="lc-main" ${openAttr}>
@@ -2469,11 +2470,12 @@ async function init(){
     }
   }
   restore(saved || {});
-  if (!settings.teamKey && !location.hash.startsWith('#join=')){
-    settings.teamKey = makeTeamKey(); settings.autoTeam = true;
-    if (!settings.deviceName) settings.deviceName = 'מכשיר ' + Math.random().toString(36).slice(2, 6).toUpperCase();
+  if (!settings.orgShared && !location.hash.startsWith('#join=')){
+    // כל המכשירים מצטרפים לסביבת העבודה המשותפת של הארגון. צ'קליסטים קיימים במכשיר עולים אליה אוטומטית.
+    settings.teamKey = CONFIG.ORG_TEAM_KEY; settings.autoTeam = false; settings.orgShared = true;
     LS.set(K.settings, settings);
   }
+  if (!settings.deviceName) { settings.deviceName = 'מכשיר ' + Math.random().toString(36).slice(2, 6).toUpperCase(); LS.set(K.settings, settings); }
   const jm = location.hash.match(/^#join=(.+)$/);
   if (jm){
     const key = decodeURIComponent(jm[1]);
